@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TifAppMobile.Language
+namespace EventParkering.Language
 {
     public interface ILocalize
     {

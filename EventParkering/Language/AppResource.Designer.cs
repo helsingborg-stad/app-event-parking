@@ -46,5 +46,95 @@ namespace EventParkering.Language {
                 resourceCulture = value;
             }
         }
+        
+        internal static string FindLabelResx {
+            get {
+                return ResourceManager.GetString("FindLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string ParkLabelResx {
+            get {
+                return ResourceManager.GetString("ParkLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string VersionLabelResx {
+            get {
+                return ResourceManager.GetString("VersionLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string InfoLabelResx {
+            get {
+                return ResourceManager.GetString("InfoLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string TryLabelResx {
+            get {
+                return ResourceManager.GetString("TryLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string KnowMoreLabelResx {
+            get {
+                return ResourceManager.GetString("KnowMoreLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string HelloLabelResx {
+            get {
+                return ResourceManager.GetString("HelloLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string WhereGoLabelResx {
+            get {
+                return ResourceManager.GetString("WhereGoLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string DrivelabelResx {
+            get {
+                return ResourceManager.GetString("DrivelabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string ChooseLabelResx {
+            get {
+                return ResourceManager.GetString("ChooseLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string ClosestLabelResx {
+            get {
+                return ResourceManager.GetString("ClosestLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string ParkingSpotLabelResx {
+            get {
+                return ResourceManager.GetString("ParkingSpotLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string MapShowsLabelResx {
+            get {
+                return ResourceManager.GetString("MapShowsLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string AddressLabelResx {
+            get {
+                return ResourceManager.GetString("AddressLabelResx", resourceCulture);
+            }
+        }
+        
+        internal static string TitleLabelResx {
+            get {
+                return ResourceManager.GetString("TitleLabelResx", resourceCulture);
+            }
+        }
     }
 }

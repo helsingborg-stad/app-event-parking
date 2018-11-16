@@ -1,8 +1,156 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EventParkering.View.EventPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+    x:Class="EventParkering.View.EventPage"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    BackgroundColor="White">
+   <ContentPage.Content>
+        <StackLayout>
+         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="0.5"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="0.5"/>
+                <RowDefinition Height="*"/>    
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>   
+                <ColumnDefinition Width="*"/> 
+                <ColumnDefinition Width="*"/> 
+            </Grid.ColumnDefinitions>
+           
+            <Label Grid.Row="0" 
+                   Grid.Column="0"
+                   x:Name="HelloLabel"
+                   Margin="30,50,0,0"
+                   FontSize="30"
+                   TextColor="Black">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <ff:CachedImage x:Name="WaveGif" 
+                            Source="resource://EventParkering.waving.gif" 
+                            Grid.Row="0" 
+                            Grid.Column="1"/>
+            <Label Grid.Row="0" 
+                   Grid.Column="2"
+                   Text=","
+                   FontSize="30"
+                   TextColor="Black"
+                   x:Name="CommaLabel">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="1" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   x:Name="WhereGoLabel"
+                   Margin="30,0,0,0"
+                   FontSize="30"
+                   TextColor="Black">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="2" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   x:Name="Drivelabel"
+                   Margin="30,0,0,20"
+                   FontSize="30"
+                   TextColor="Black">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="3" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   x:Name="ChooseLabel"
+                   Margin="30,0,30,0"
+                   FontSize="15"    
+                   TextColor="#9C9C9C">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Regular</On>
+                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="4" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="3"
+                   BackgroundColor="#F4F4F6" 
+                   Margin="20,0,0,0"/>
+            <Label Grid.Row="5" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   x:Name="TodaysDate"
+                   Margin="30,0,0,0"
+                   FontSize="13"
+                   TextColor="Black"
+                   YAlign="Center">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Bold</On>
+                           <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="6" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="3"
+                   BackgroundColor="#F4F4F6" 
+                   Margin="20,0,0,0"/>
+                
+            <ListView RowHeight="70" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" x:Name="myListView" SeparatorColor="#F4F4F6" ItemsSource="{Binding EventList}" SelectedItem="{Binding SelectedEvent}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout VerticalOptions="Center" Margin="30,0,0,0" Orientation="Horizontal">
+                                        
+                                   <Label Text="{Binding Test}" TextColor="Black" FontSize="20" VerticalOptions="Center">
+                                       <Label.FontFamily>
+                                           <OnPlatform x:TypeArguments="x:String">
+                                               <On Platform="iOS">Montserrat-Bold</On>
+                                               <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                                           </OnPlatform>
+                                       </Label.FontFamily>
+                                    </Label>
+                                   <forms:CachedImage Source="{Binding TestImage}" HeightRequest="10" WidthRequest="10" HorizontalOptions="EndAndExpand" Margin="0,0,30,0"/>
+                                        
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+     </StackLayout>
+   </ContentPage.Content>
 </ContentPage>

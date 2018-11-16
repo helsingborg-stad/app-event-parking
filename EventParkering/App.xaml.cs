@@ -1,17 +1,33 @@
 ﻿using System;
+using EventParkering.ViewModel;
+using Prism;
+using Prism.DryIoc;
+using Prism.Ioc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EventParkering
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App() : this(null) { }
+
+        public App(IPlatformInitializer initializer) : base(initializer) { }
+
+        protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<View.MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<View.EventPage, EventPageViewModel>();
+            containerRegistry.RegisterForNavigation<View.ParkPage, ParkPageViewModel>();
         }
 
         protected override void OnStart()

@@ -49,12 +49,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
+    <PackageReference Include="Prism.Forms">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Core">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity.Forms">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.DryIoc.Forms">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
+    <PackageReference Include="LiveXAML">
+      <Version>2.1.45</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>3.3.0.967583</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg">
+      <Version>2.4.3.840</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
+      <Version>2.4.3.840</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.2.22</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -83,6 +110,22 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\backarr.png" />
+    <AndroidResource Include="Resources\drawable\ca.png" />
+    <AndroidResource Include="Resources\drawable\splashscreen3x.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\background.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\splashscreen3x.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\background.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splashscreen3x.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\background.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splashscreen3x.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\background.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\splashscreen3x.png" />
+    <AndroidResource Include="Resources\drawable\chevronright.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\chevronright.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\chevronright.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\chevronright.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\chevronright.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -96,6 +139,12 @@
       <Project>{3EAE7413-0929-4BC4-AA4D-4D6204730999}</Project>
       <Name>EventParkering</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Montserrat-Bold.ttf" />
+    <AndroidAsset Include="Assets\Montserrat-ExtraBold.ttf" />
+    <AndroidAsset Include="Assets\Montserrat-Medium.ttf" />
+    <AndroidAsset Include="Assets\Montserrat-Regular.ttf" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

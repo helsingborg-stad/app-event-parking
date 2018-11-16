@@ -1,8 +1,88 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EventParkering.View.MainPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+    x:Class="EventParkering.View.MainPage"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="White">
+    <RelativeLayout>
+       <forms:CachedImage Source="background.png" 
+              Aspect="AspectFill"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+       <StackLayout Padding="0,190,0,0" x:Name="StackPadding">
+            <Label x:Name="FindLabel" 
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="White"
+                   FontSize="30">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label x:Name="ParkLabel" 
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="White"
+                   FontSize="30">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-ExtraBold</On>
+                           <On Platform="Android">Montserrat-ExtraBold.ttf#Montserrat-ExtraBold</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label x:Name="VersionLabel"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Gray"
+                   FontSize="15">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Regular</On>
+                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Label x:Name="InfoLabel"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   Margin="30,70,30,30">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Regular</On>
+                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+            <Button x:Name="TryLabel" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Command="{Binding FindEvents}"
+                    TextColor="White"
+                    BackgroundColor="#2BCD71"
+                    WidthRequest="320"
+                    FontSize="15">
+                   <Button.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Regular</On>
+                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                       </OnPlatform>
+                   </Button.FontFamily>
+            </Button>
+            <Label x:Name="KnowMoreLabel"  
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="White"
+                   FontSize="15">
+                   <Label.FontFamily>
+                       <OnPlatform x:TypeArguments="x:String">
+                           <On Platform="iOS">Montserrat-Regular</On>
+                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                       </OnPlatform>
+                   </Label.FontFamily>
+            </Label>
+       </StackLayout>
+    </RelativeLayout>
 </ContentPage>

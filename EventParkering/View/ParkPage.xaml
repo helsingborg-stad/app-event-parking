@@ -1,8 +1,128 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EventParkering.View.ParkPage">
+    x:Class="EventParkering.View.ParkPage"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="White">
     <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnPlatform x:TypeArguments="GridLength"
+                                          iOS="80"
+                                       Android="50"/>
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                    <RowDefinition Height="0.5"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>   
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+               
+                <Button Grid.Row="0" 
+                        Grid.Column="0" 
+                        Image="backarr.png"
+                        Command="{Binding GoBack}"
+                        BackgroundColor="White"
+                        x:Name="BackButton"/>
+                <Label FontSize="20"
+                       TextColor="Black"
+                       Grid.Row="0" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="3"
+                       x:Name="TitleLabel" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       LineBreakMode="TailTruncation">
+                       <Label.FontFamily>
+                           <OnPlatform x:TypeArguments="x:String">
+                               <On Platform="iOS">Montserrat-Bold</On>
+                               <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                           </OnPlatform>
+                       </Label.FontFamily>
+                </Label>
+                <Label Grid.Row="1" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="3" 
+                       BackgroundColor="#9C9C9C"/>
+                <Label FontSize="30" 
+                       TextColor="Black" 
+                       Grid.Row="2" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="2"
+                       x:Name="ClosestLabel" 
+                       Margin="30,0,0,0"
+                       YAlign="End">
+                       <Label.FontFamily>
+                           <OnPlatform x:TypeArguments="x:String">
+                               <On Platform="iOS">Montserrat-Bold</On>
+                               <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                           </OnPlatform>
+                       </Label.FontFamily>
+                </Label>
+                <Label FontSize="30" 
+                       TextColor="Black" 
+                       Grid.Row="3"
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="3" 
+                       x:Name="ParkingSpotLabel" 
+                       Margin="30,0,0,0">
+                       <Label.FontFamily>
+                           <OnPlatform x:TypeArguments="x:String">
+                               <On Platform="iOS">Montserrat-Bold</On>
+                               <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                           </OnPlatform>
+                       </Label.FontFamily>
+                </Label>
+                <forms:CachedImage Grid.Row="3" 
+                                   Grid.Column="2" 
+                                   Source="ca.png" 
+                                   Margin="-30,0,0,0"/>
+                <Label FontSize="15" 
+                       TextColor="#9C9C9C" 
+                       Grid.Row="4" 
+                       Grid.Column="0"
+                       x:Name="MapShowsLabel" 
+                       Margin="30,0,0,0" 
+                       Grid.ColumnSpan="3">
+                       <Label.FontFamily>
+                           <OnPlatform x:TypeArguments="x:String">
+                               <On Platform="iOS">Montserrat-Regular</On>
+                               <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                           </OnPlatform>
+                       </Label.FontFamily>
+                </Label>
+                <Label FontSize="15" 
+                       TextColor="Black"
+                       Grid.Row="5" 
+                       Grid.Column="0" 
+                       x:Name="AddressLabel" 
+                       Margin="30,0,0,0" 
+                       Grid.ColumnSpan="2">
+                       <Label.FontFamily>
+                           <OnPlatform x:TypeArguments="x:String">
+                               <On Platform="iOS">Montserrat-Medium</On>
+                               <On Platform="Android">Montserrat-Medium.ttf#Montserrat-Medium</On>
+                           </OnPlatform>
+                       </Label.FontFamily>
+                </Label>
+            </Grid>
+            <StackLayout>
+                
+                
+                
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -16,4 +16,65 @@
         name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    
+    <data name="FindLabelResx" xml:space="preserve">
+        <value>Hitta</value>
+    </data>
+    
+     <data name="ParkLabelResx" xml:space="preserve">
+        <value>Parkering</value>
+    </data>
+    
+     <data name="VersionLabelResx" xml:space="preserve">
+        <value>BETA VERSION</value>
+    </data>
+    
+     <data name="InfoLabelResx" xml:space="preserve">
+        <value>Hitta Parkering är en beta tjänst vi har tagit fram i syfte att utveckla Helsingborgs stadsplatform. Du får gärna testa men funktionaliteten är bergränsad och det är inte säkert att vi kommer att släppa denna tjänst i framtiden.</value>
+    </data>
+    
+     <data name="TryLabelResx" xml:space="preserve">
+        <value>Jag vill prova tjänsten nu</value>
+    </data>
+    
+     <data name="KnowMoreLabelResx" xml:space="preserve">
+        <value>Jag vill veta mer</value>
+    </data>
+    
+     <data name="HelloLabelResx" xml:space="preserve">
+        <value>Hej</value>
+    </data>
+    
+    <data name="WhereGoLabelResx" xml:space="preserve">
+        <value>Vart vill du</value>
+    </data>
+    
+    <data name="DrivelabelResx" xml:space="preserve">
+        <value>köra idag?</value>
+    </data>
+    
+    <data name="ChooseLabelResx" xml:space="preserve">
+        <value>Välj ett av evenemangen i Helsingborg för att visa möjliga parkeringsplatser:</value>
+    </data>
+    
+    <data name="ClosestLabelResx" xml:space="preserve">
+        <value>Närmaste</value>
+    </data>
+    
+    <data name="ParkingSpotLabelResx" xml:space="preserve">
+        <value>parkeringsplats</value>
+    </data>
+    
+    <data name="MapShowsLabelResx" xml:space="preserve">
+        <value>Kartan visar närmaste p-platser till</value>
+    </data>
+    
+    <data name="AddressLabelResx" xml:space="preserve">
+        <value>Bredgatan 11, Helsingborg</value>
+    </data>
+    
+    <data name="TitleLabelResx" xml:space="preserve">
+        <value>HIC at THINK Open Space:...</value>
+    </data>
+    
 </root>

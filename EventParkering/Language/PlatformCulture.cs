@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TifAppMobile.Language
+namespace EventParkering.Language
 {
     public class PlatformCulture
     {
