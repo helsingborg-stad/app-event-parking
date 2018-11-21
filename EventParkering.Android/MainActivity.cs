@@ -18,8 +18,6 @@ namespace EventParkering.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.Window.RequestFeature(WindowFeatures.ActionBar);
-            // Name of the MainActivity theme you had there before.
-            // Or you can use global::Android.Resource.Style.ThemeHoloLight
             base.SetTheme(Resource.Style.MainTheme);
 
             base.OnCreate(savedInstanceState);
