@@ -179,12 +179,6 @@
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>3.3.0.967583</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.FFImageLoading.Svg">
-      <Version>2.4.3.840</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
-      <Version>2.4.3.840</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

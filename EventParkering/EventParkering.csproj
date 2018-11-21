@@ -18,8 +18,6 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
     <PackageReference Include="LiveXAML" Version="2.1.45" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="3.3.0.967583" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
