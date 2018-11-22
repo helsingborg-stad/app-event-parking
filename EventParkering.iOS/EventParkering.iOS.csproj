@@ -197,8 +197,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\backarr.png" />
-    <BundleResource Include="Resources\ca.png" />
     <BundleResource Include="Resources\background.png" />
     <BundleResource Include="Resources\chevronright.png" />
     <BundleResource Include="Resources\Montserrat-Bold.ttf" />
@@ -207,5 +205,7 @@
     </BundleResource>
     <BundleResource Include="Resources\Montserrat-Medium.ttf" />
     <BundleResource Include="Resources\Montserrat-Regular.ttf" />
+    <BundleResource Include="Resources\car.png" />
+    <BundleResource Include="Resources\arrowLeft.png" />
   </ItemGroup>
 </Project>

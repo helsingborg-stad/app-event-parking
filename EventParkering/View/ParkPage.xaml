@@ -32,7 +32,7 @@
                
                 <Button Grid.Row="0" 
                         Grid.Column="0" 
-                        Image="backarr.png"
+                        Image="arrowLeft.png"
                         Command="{Binding GoBack}"
                         BackgroundColor="White"
                         x:Name="BackButton"/>
@@ -87,7 +87,7 @@
                 </Label>
                 <forms:CachedImage Grid.Row="3" 
                                    Grid.Column="2" 
-                                   Source="ca.png" 
+                                   Source="car.png" 
                                    Margin="-30,0,0,0"/>
                 <Label FontSize="15" 
                        TextColor="#9C9C9C" 

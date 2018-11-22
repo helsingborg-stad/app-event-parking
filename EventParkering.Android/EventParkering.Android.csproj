@@ -113,8 +113,6 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\backarr.png" />
-    <AndroidResource Include="Resources\drawable\ca.png" />
     <AndroidResource Include="Resources\drawable\splashscreen3x.png" />
     <AndroidResource Include="Resources\drawable-hdpi\background.png" />
     <AndroidResource Include="Resources\drawable-hdpi\splashscreen3x.png" />
@@ -129,6 +127,17 @@
     <AndroidResource Include="Resources\drawable-xhdpi\chevronright.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\chevronright.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\chevronright.png" />
+    <AndroidResource Include="Resources\drawable\car.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\car.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\car.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\car.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\car.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\arrowLeft.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\arrowLeft.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrowLeft.png" />
+    <AndroidResource Include="Resources\drawable\arrowLeft.png" />
+    <AndroidResource Include="Resources\drawable\background.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\arrowLeft.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

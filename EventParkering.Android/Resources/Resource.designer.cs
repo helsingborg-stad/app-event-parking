@@ -2460,7 +2460,10 @@ namespace EventParkering.Droid
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int avd_hide_password = 2130837587;
+			public const int arrowLeft = 2130837587;
+			
+			// aapt resource value: 0x7f020054
+			public const int avd_hide_password = 2130837588;
 			
 			// aapt resource value: 0x7f020149
 			public const int avd_hide_password_1 = 2130837833;
@@ -2471,8 +2474,8 @@ namespace EventParkering.Droid
 			// aapt resource value: 0x7f02014b
 			public const int avd_hide_password_3 = 2130837835;
 			
-			// aapt resource value: 0x7f020054
-			public const int avd_show_password = 2130837588;
+			// aapt resource value: 0x7f020055
+			public const int avd_show_password = 2130837589;
 			
 			// aapt resource value: 0x7f02014c
 			public const int avd_show_password_1 = 2130837836;
@@ -2483,14 +2486,11 @@ namespace EventParkering.Droid
 			// aapt resource value: 0x7f02014e
 			public const int avd_show_password_3 = 2130837838;
 			
-			// aapt resource value: 0x7f020055
-			public const int backarr = 2130837589;
-			
 			// aapt resource value: 0x7f020056
 			public const int background = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ca = 2130837591;
+			public const int car = 2130837591;
 			
 			// aapt resource value: 0x7f020058
 			public const int chevronright = 2130837592;
