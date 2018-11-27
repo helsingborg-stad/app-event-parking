@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
+using EventParkering.Services;
 using Xamarin.Forms;
 
 namespace EventParkering.View
@@ -26,13 +26,20 @@ namespace EventParkering.View
             if (Device.RuntimePlatform == Device.iOS)
             {
                 WaveGif.Margin = new Thickness(-130, 45, 0, 0);
-                CommaLabel.Margin = new Thickness(-100, 50, 0, 0);
+                CommaLabel.Margin = new Thickness(-100, 50, 0, 0);  
             }
             else
             {
                 WaveGif.Margin = new Thickness(-180, 55, 0, 0);
                 CommaLabel.Margin = new Thickness(-135, 50, 0, 0);
-            }
+            }  
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            listView.ItemsSource = await RestService.RefreshDataAsync();
         }
     }
 }

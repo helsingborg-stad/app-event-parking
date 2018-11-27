@@ -127,14 +127,14 @@
                    BackgroundColor="#F4F4F6" 
                    Margin="20,0,0,0"/>
                 
-            <ListView RowHeight="70" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" x:Name="myListView" SeparatorColor="#F4F4F6" ItemsSource="{Binding EventList}" SelectedItem="{Binding SelectedEvent}" >
+            <ListView x:Name="listView" RowHeight="70" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" SeparatorColor="#F4F4F6" SelectedItem="{Binding SelectedEvent}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout VerticalOptions="Center" Margin="30,0,0,0" Orientation="Horizontal">
                                         
-                                   <Label Text="{Binding Test}" TextColor="Black" FontSize="20" VerticalOptions="Center">
+                                   <Label Text="{Binding name}" TextColor="Black" FontSize="20" VerticalOptions="Center">
                                        <Label.FontFamily>
                                            <OnPlatform x:TypeArguments="x:String">
                                                <On Platform="iOS">Montserrat-Bold</On>
@@ -142,7 +142,7 @@
                                            </OnPlatform>
                                        </Label.FontFamily>
                                     </Label>
-                                   <forms:CachedImage Source="{Binding TestImage}" HeightRequest="10" WidthRequest="10" HorizontalOptions="EndAndExpand" Margin="0,0,30,0"/>
+                                   <forms:CachedImage Source="chevronright.png" HeightRequest="10" WidthRequest="10" HorizontalOptions="EndAndExpand" Margin="0,0,30,0"/>
                                         
                                 </StackLayout>
                             </ViewCell.View>

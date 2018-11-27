@@ -21,15 +21,20 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="modernhttpclient" Version="2.4.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Language\" />
     <Folder Include="Model\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Language\AppResources.Designer.cs" />
+    <Compile Remove="Model\Services\ItemManager.cs" />
+    <Compile Remove="View\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="waving.gif" />
