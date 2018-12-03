@@ -33,7 +33,7 @@ namespace EventParkering.View
                 WaveGif.Margin = new Thickness(-180, 55, 0, 0);
                 CommaLabel.Margin = new Thickness(-135, 50, 0, 0);
             }
-            listView.ItemSelected += (sender, args) => listView.SelectedItem = null;//Alter default list behaviour
+            listView.ItemSelected += (sender, args) => listView.SelectedItem = null;
         }
     }
 }

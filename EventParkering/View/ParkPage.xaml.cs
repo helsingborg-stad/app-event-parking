@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace EventParkering.View
 {
@@ -18,7 +19,7 @@ namespace EventParkering.View
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                TitleLabel.Margin = new Thickness(70, 30, 30, 0);
+                TitleLabel.Margin = new Thickness(60, 30, 30, 0);
                 BackButton.Margin = new Thickness(-40, 30, 0, 0);
             }
             else
@@ -26,6 +27,10 @@ namespace EventParkering.View
                 TitleLabel.Margin = new Thickness(70, 0, 30, 0);
                 BackButton.Margin = new Thickness(-40, 0, 0, 0);
             }
+
+            MyMap.MoveToRegion(
+             MapSpan.FromCenterAndRadius(
+                new Position(37, -122), Distance.FromMiles(1)));
         }
     }
 }

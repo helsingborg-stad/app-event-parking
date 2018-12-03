@@ -10,8 +10,8 @@ namespace EventParkering.Services
 {
     public class RestService : IRestService
     {
-        static readonly Lazy<RestService> _instanceHolder =
-                  new Lazy<RestService>(() => new RestService());
+        /*static readonly Lazy<RestService> _instanceHolder =
+                  new Lazy<RestService>(() => new RestService());*/
 
         public List<EventItem> EventList { get; private set; }
         HttpClient client;
@@ -22,13 +22,13 @@ namespace EventParkering.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public static RestService Instance => _instanceHolder.Value;
+        //public static RestService Instance => _instanceHolder.Value;
 
         public async Task<List<EventItem>> RefreshDataAsync()
         {
 
             EventList = new List<EventItem>();
-            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            var uri = new Uri(string.Format(Constants.EventUrl, string.Empty));
 
             try
             {

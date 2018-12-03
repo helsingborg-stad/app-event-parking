@@ -30,6 +30,7 @@
     <Folder Include="Language\" />
     <Folder Include="Model\" />
     <Folder Include="Services\" />
+    <Folder Include="Objects\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Language\AppResources.Designer.cs" />

@@ -6,6 +6,7 @@
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
@@ -15,7 +16,7 @@
                         <RowDefinition.Height>
                             <OnPlatform x:TypeArguments="GridLength"
                                           iOS="80"
-                                       Android="50"/>
+                                          Android="50"/>
                         </RowDefinition.Height>
                     </RowDefinition>
                     <RowDefinition Height="0.5"/>
@@ -48,15 +49,11 @@
                        x:Name="TitleLabel">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
-                               <On Platform="iOS">Montserrat-Bold</On>
-                               <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                               <On Platform="iOS">Montserrat-Medium</On>
+                               <On Platform="Android">Montserrat-Medium.ttf#Montserrat-Medium</On>
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-                <Label Grid.Row="1" 
-                       Grid.Column="0" 
-                       Grid.ColumnSpan="3" 
-                       BackgroundColor="#9C9C9C"/>
                 <Label FontSize="30" 
                        TextColor="Black" 
                        Grid.Row="2" 
@@ -119,11 +116,12 @@
                        </Label.FontFamily>
                 </Label>
             </Grid>
-            <StackLayout>
-                
-                
-                
+           <StackLayout VerticalOptions="FillAndExpand" Padding="0,10,0,0">
+                <maps:Map        
+                    x:Name="MyMap" 
+                    IsShowingUser="true"
+                    MapType="Hybrid"/>
             </StackLayout>
-        </StackLayout>
+        </StackLayout> 
     </ContentPage.Content>
 </ContentPage>

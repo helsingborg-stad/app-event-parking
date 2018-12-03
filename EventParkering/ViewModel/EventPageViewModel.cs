@@ -16,7 +16,6 @@ namespace EventParkering.ViewModel
         private EventItem _selectedEvent;
         private List<EventItem> _itemSource;
 
-        //Item Source Binding Property
         public IEnumerable ItemSource
         {
             get => _itemSource;
@@ -27,7 +26,6 @@ namespace EventParkering.ViewModel
             }
         }
 
-        // ReSharper disable once IdentifierTypo
         public EventItem EventtItem
         {
             get => _eventItem;
@@ -39,13 +37,11 @@ namespace EventParkering.ViewModel
             get => _selectedEvent;
             set
             {
-                //Move to another page if selected is not null
                 if (value != null)
                 {
                     var parameter = new NavigationParameters { { "Event", value } };
                     _navigationService.NavigateAsync("ParkPage", parameter);
                 }
-
                 SetProperty(ref _selectedEvent, value);
             }
         }
@@ -56,24 +52,6 @@ namespace EventParkering.ViewModel
             _restService = restService;
             LoadEventItems();
         }
-
-        /*private EventItem _selectedEvent { get; set; }
-        public EventItem SelectedEvent
-        {
-            get { return _selectedEvent; }
-            set
-            {
-                if (_selectedEvent != value)
-                {
-                    _selectedEvent = value;
-                    var parameter = new NavigationParameters {  { "TitleValue", _selectedEvent?.name} };
-
-                    Debug.WriteLine(_selectedEvent.name + _selectedEvent.streetAddress);
-
-                    _navigationService.NavigateAsync("ParkPage", parameter);
-                }
-            }
-        }*/
 
         private async void LoadEventItems()
         {

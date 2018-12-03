@@ -31,9 +31,9 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Can we use your location?</string>
+	<string>We need your location to guide you to the closest parking spot.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Can we use your location?</string>
+	<string>We need your location to guide you to the closest parking spot.</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>UIAppFonts</key>
@@ -43,5 +43,7 @@
 		<string>Montserrat-Regular.ttf</string>
 		<string>Montserrat-Medium.ttf</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your location to guide you to the closest parking spot.</string>
 </dict>
 </plist>
