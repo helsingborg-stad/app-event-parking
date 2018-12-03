@@ -42,7 +42,7 @@ namespace EventParkering.ViewModel
             get { return _lon; }
             set { SetProperty(ref _lon, value); }
         }
-        public string add = ", Hel";
+
         private EventItem _selectedString;
         private EventItem _eventItem;
 
@@ -52,8 +52,8 @@ namespace EventParkering.ViewModel
             set
             {
                 _eventItem = value;
-                Title = value.name;
-                Address = value.streetAddress;
+                Title = value?.name;
+                Address = value?.streetAddress;
                 ID = value.id;
                 Lat = value.lat;
                 Lon = value.lon;
