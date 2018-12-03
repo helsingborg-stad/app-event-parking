@@ -15,8 +15,6 @@ namespace EventParkering.View
             ClosestLabel.Text = Language.AppResource.ClosestLabelResx;
             ParkingSpotLabel.Text = Language.AppResource.ParkingSpotLabelResx;
             MapShowsLabel.Text = Language.AppResource.MapShowsLabelResx;
-            AddressLabel.Text = Language.AppResource.AddressLabelResx;
-            TitleLabel.Text = Language.AppResource.TitleLabelResx;
 
             if (Device.RuntimePlatform == Device.iOS)
             {

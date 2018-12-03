@@ -32,14 +32,8 @@ namespace EventParkering.View
             {
                 WaveGif.Margin = new Thickness(-180, 55, 0, 0);
                 CommaLabel.Margin = new Thickness(-135, 50, 0, 0);
-            }  
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            listView.ItemsSource = await RestService.RefreshDataAsync();
+            }
+            listView.ItemSelected += (sender, args) => listView.SelectedItem = null;//Alter default list behaviour
         }
     }
 }

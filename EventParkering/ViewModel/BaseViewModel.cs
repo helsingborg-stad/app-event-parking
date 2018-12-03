@@ -2,36 +2,33 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Prism.Mvvm;
+using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace EventParkering.ViewModel
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : BindableBase, INavigationAware
     {
+        protected INavigationService _navigationService { get; }
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
-            Action onChanged = null)
+        public BaseViewModel(INavigationService navigationService)
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
+            _navigationService = navigationService;
         }
 
-       
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-       
+
+        public virtual void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
+
+        public virtual void OnNavigatingTo(INavigationParameters parameters)
+        {
+        }
+
+
     }
 }

@@ -8,23 +8,26 @@ using Newtonsoft.Json;
 
 namespace EventParkering.Services
 {
-    public static class RestService
+    public class RestService : IRestService
     {
-        public static List<EventItem> EventList { get; private set; }
-        static HttpClient client;
+        static readonly Lazy<RestService> _instanceHolder =
+                  new Lazy<RestService>(() => new RestService());
 
-        static RestService()
+        public List<EventItem> EventList { get; private set; }
+        HttpClient client;
+
+        public RestService()
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public static async Task<List<EventItem>> RefreshDataAsync()
+        public static RestService Instance => _instanceHolder.Value;
+
+        public async Task<List<EventItem>> RefreshDataAsync()
         {
 
             EventList = new List<EventItem>();
-
-            // RestUrl = http://developer.xamarin.com:8081/api/todoitems
             var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
             try

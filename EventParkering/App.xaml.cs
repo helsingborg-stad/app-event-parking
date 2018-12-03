@@ -1,4 +1,5 @@
 ﻿using System;
+using EventParkering.Services;
 using EventParkering.ViewModel;
 using Prism;
 using Prism.DryIoc;
@@ -24,6 +25,7 @@ namespace EventParkering
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IRestService, RestService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<View.MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<View.EventPage, EventPageViewModel>();

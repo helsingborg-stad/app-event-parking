@@ -36,15 +36,16 @@
                         Command="{Binding GoBack}"
                         BackgroundColor="White"
                         x:Name="BackButton"/>
-                <Label FontSize="20"
+                <Label Text="{Binding Title}"
+                       FontSize="20"
                        TextColor="Black"
                        Grid.Row="0" 
                        Grid.Column="0" 
-                       Grid.ColumnSpan="3"
-                       x:Name="TitleLabel" 
+                       Grid.ColumnSpan="3" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center"
-                       LineBreakMode="TailTruncation">
+                       LineBreakMode="TailTruncation"
+                       x:Name="TitleLabel">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Bold</On>
@@ -103,11 +104,11 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-                <Label FontSize="15" 
+                <Label Text="{Binding Address}"
+                       FontSize="15" 
                        TextColor="Black"
                        Grid.Row="5" 
-                       Grid.Column="0" 
-                       x:Name="AddressLabel" 
+                       Grid.Column="0"  
                        Margin="30,0,0,0" 
                        Grid.ColumnSpan="2">
                        <Label.FontFamily>

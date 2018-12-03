@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EventParkering.Services;
+using EventParkering.ViewModel;
 using FFImageLoading.Forms.Touch;
 using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
+using Xamarin.Forms;
 
 namespace EventParkering.iOS
 {
@@ -25,9 +30,21 @@ namespace EventParkering.iOS
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
             Xamarin.FormsMaps.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public class iOSInitializer : IPlatformInitializer
+        {
+            public void RegisterTypes(IContainerRegistry containerRegistry)
+            {
+                containerRegistry.Register<IRestService, RestService>();
+                containerRegistry.RegisterForNavigation<NavigationPage>();
+                containerRegistry.RegisterForNavigation<View.MainPage, MainPageViewModel>();
+                containerRegistry.RegisterForNavigation<View.EventPage, EventPageViewModel>();
+                containerRegistry.RegisterForNavigation<View.ParkPage, ParkPageViewModel>();
+            }
         }
     }
 }
