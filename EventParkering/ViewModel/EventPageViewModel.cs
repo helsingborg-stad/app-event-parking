@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using EventParkering.Model;
 using EventParkering.Services;
 using Prism.Navigation;
-using Xamarin.Forms;
 
 namespace EventParkering.ViewModel
 {

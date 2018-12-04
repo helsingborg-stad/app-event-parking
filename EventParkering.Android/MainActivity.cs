@@ -15,6 +15,7 @@ using Plugin.Permissions;
 using Plugin.CurrentActivity;
 using Plugin.Permissions.Abstractions;
 using Prism.Services;
+using Xamarin.Forms.GoogleMaps.Android;
 
 namespace EventParkering.Droid
 {
@@ -36,7 +37,11 @@ namespace EventParkering.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init();
 
-            Xamarin.FormsMaps.Init(this, savedInstanceState);
+            var platformConfig = new PlatformConfig
+            {
+                BitmapDescriptorFactory = new CachingNativeBitmapDescriptorFactory()
+            };
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState, platformConfig);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
         }
@@ -92,8 +97,7 @@ namespace EventParkering.Droid
             }
             catch (Exception ex)
             {
-                //Exception ex;
-                //LabelGeolocation.Text = "Error: " + ex;
+
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 
@@ -8,4 +8,4 @@ namespace EventParkering.Objects
     {
         public List<CustomPin> CustomPins { get; set; }
     }
-}
+}*/

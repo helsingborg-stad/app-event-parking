@@ -22,8 +22,6 @@ namespace EventParkering.ViewModel
             {
                 _navigationService.NavigateAsync("EventPage");               
             });
-
-        }
-       
+        }       
     }   
 }

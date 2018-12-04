@@ -9,6 +9,7 @@ using Prism;
 using Prism.Ioc;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps.iOS;
 
 namespace EventParkering.iOS
 {
@@ -29,7 +30,13 @@ namespace EventParkering.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
-            Xamarin.FormsMaps.Init();
+            // Override default ImageFactory by your implementation. 
+            var platformConfig = new PlatformConfig
+            {
+                ImageFactory = new CachingImageFactory()
+            };
+
+            Xamarin.FormsGoogleMaps.Init("AIzaSyDqf_hvQ5-GuDK8q1TCwcw3rW_vGEMriHg", platformConfig);
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

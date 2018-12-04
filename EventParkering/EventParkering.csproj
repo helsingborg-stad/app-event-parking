@@ -17,13 +17,13 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
     <PackageReference Include="LiveXAML" Version="2.1.45" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="3.3.0.967583" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="waving.gif" />
+    <EmbeddedResource Include="Services\SilverJsonStyle.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Language\AppResource.resx">
@@ -54,5 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="waving.gif" />
+    <None Remove="Services\SilverJsonStyle.json" />
   </ItemGroup>
 </Project>

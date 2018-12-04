@@ -70,9 +70,6 @@
     <PackageReference Include="LiveXAML">
       <Version>2.1.45</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>3.3.0.967583</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.2.22</Version>
     </PackageReference>
@@ -94,11 +91,15 @@
     <PackageReference Include="Plugin.Permissions">
       <Version>3.0.0.12</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Forms.GoogleMaps">
+      <Version>3.0.4</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CachingNativeBitmapDescriptorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -147,7 +148,6 @@
     <AndroidResource Include="Resources\drawable\arrowLeft.png" />
     <AndroidResource Include="Resources\drawable\background.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\arrowLeft.png" />
-    <AndroidResource Include="Resources\layout\Main.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

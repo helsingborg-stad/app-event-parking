@@ -28,7 +28,5 @@ namespace EventParkering.ViewModel
         public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
         }
-
-
     }
 }

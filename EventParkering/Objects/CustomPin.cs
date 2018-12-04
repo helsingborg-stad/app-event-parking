@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Xamarin.Forms.Maps;
 
 namespace EventParkering.Objects
@@ -8,3 +8,4 @@ namespace EventParkering.Objects
         public string Url { get; set; }
     }
 }
+*/

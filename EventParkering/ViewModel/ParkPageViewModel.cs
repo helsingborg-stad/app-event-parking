@@ -52,8 +52,9 @@ namespace EventParkering.ViewModel
             set
             {
                 _eventItem = value;
-                Title = value?.name;
-                Address = value?.streetAddress;
+                Title = value.name;
+                var address = value.streetAddress;
+                Address = address + ", Helsingborg";
                 ID = value.id;
                 Lat = value.lat;
                 Lon = value.lon;

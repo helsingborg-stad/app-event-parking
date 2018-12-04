@@ -6,7 +6,7 @@
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
@@ -107,7 +107,7 @@
                        Grid.Row="5" 
                        Grid.Column="0"  
                        Margin="30,0,0,0" 
-                       Grid.ColumnSpan="2">
+                       Grid.ColumnSpan="3">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Medium</On>
@@ -116,11 +116,10 @@
                        </Label.FontFamily>
                 </Label>
             </Grid>
-           <StackLayout VerticalOptions="FillAndExpand" Padding="0,10,0,0">
+           <StackLayout VerticalOptions="FillAndExpand" Padding="1,10,0,0">
                 <maps:Map        
                     x:Name="MyMap" 
-                    IsShowingUser="true"
-                    MapType="Hybrid"/>
+                    IsShowingUser="true"/>
             </StackLayout>
         </StackLayout> 
     </ContentPage.Content>
