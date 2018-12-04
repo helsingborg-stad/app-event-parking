@@ -2,11 +2,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EventParkering.View.ParkPage"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+     x:Class="EventParkering.View.ParkPage"
     BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
@@ -117,10 +118,17 @@
                 </Label>
             </Grid>
            <StackLayout VerticalOptions="FillAndExpand" Padding="1,10,0,0">
-                <maps:Map        
-                    x:Name="MyMap" 
-                    IsShowingUser="true"/>
+                <maps:Map x:Name="MyMap" IsShowingUser="true" MyLocationEnabled="true">
+                
+                    <maps:Map.Behaviors>
+                      <bindings:BindingPinsBehavior Value="{Binding Pins}"/>
+                      <bindings:MapClickedToCommandBehavior Command="{Binding MapClickedCommand}"/>
+                    </maps:Map.Behaviors>
+                    
+                </maps:Map>
             </StackLayout>
         </StackLayout> 
     </ContentPage.Content>
 </ContentPage>
+
+

@@ -53,7 +53,7 @@ namespace EventParkering.ViewModel
 
         private async void LoadEventItems()
         {
-            ItemSource = await _restService.RefreshDataAsync();
+            ItemSource = await _restService.EventDataAsync();
         }
     }
 }

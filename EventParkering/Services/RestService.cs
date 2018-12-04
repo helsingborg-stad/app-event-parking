@@ -19,7 +19,7 @@ namespace EventParkering.Services
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<List<EventItem>> RefreshDataAsync()
+        public async Task<List<EventItem>> EventDataAsync()
         {
             EventList = new List<EventItem>();
 
@@ -41,6 +41,24 @@ namespace EventParkering.Services
             }
 
             return EventList;
+        }
+
+        public async Task ParkDataAsync()
+        {
+            try
+            {
+                var uri = new Uri(string.Format(Constants.ParkUrl, string.Empty));
+                HttpResponseMessage response = await client.GetAsync(uri);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(responseBody);
+            }
+            catch (HttpRequestException e)
+            {
+                Debug.WriteLine("\nException Caught!");
+                Debug.WriteLine("Message :{0} ", e.Message);
+            }
+            client.Dispose();
         }
     }
 }

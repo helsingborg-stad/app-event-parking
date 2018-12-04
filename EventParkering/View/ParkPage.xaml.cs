@@ -1,6 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
+using Plugin.Geolocator;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -42,9 +45,39 @@ namespace EventParkering.View
                 Json = reader.ReadToEnd();
             }
             MyMap.MapStyle = MapStyle.FromJson(Json);
-            Debug.WriteLine(Json);
 
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(56.044402, 12.690118), Distance.FromMeters(10000)), true);              
+            var locator = CrossGeolocator.Current;
+
+            var position = locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+
+            GetCurrentLocation();
+        }
+
+        public double latitude { get; set; }
+        public double longitude { get; set; }
+        private async Task<bool> GetCurrentLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 100;
+            if (!CrossGeolocator.IsSupported)
+                return false;
+            if (!CrossGeolocator.Current.IsGeolocationAvailable)
+                return false;
+            try
+            {
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+
+                latitude = position.Latitude;
+                longitude = position.Longitude;
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(latitude, longitude), Distance.FromMeters(10000)), true);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                string reason = e.Message;
+                return false;
+            }
         }
     }
 }

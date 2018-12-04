@@ -7,6 +7,6 @@ namespace EventParkering.Services
 {
     public interface IRestService
     {
-        Task<List<EventItem>> RefreshDataAsync();
+        Task<List<EventItem>> EventDataAsync();
     }
 }

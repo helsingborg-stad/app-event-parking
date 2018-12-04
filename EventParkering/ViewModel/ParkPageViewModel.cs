@@ -1,12 +1,29 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using EventParkering.Model;
+using EventParkering.Services;
 using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 
 namespace EventParkering.ViewModel
 {
     public class ParkPageViewModel : BaseViewModel
     {
+        public ObservableCollection<Pin> Pins { get; set; }
+
+        public Command<MapClickedEventArgs> MapClickedCommand =>
+            new Command<MapClickedEventArgs>(args =>
+            {
+                Pins.Add(new Pin
+                {
+                    /*Label = $"Pin{Pins.Count}",
+                    Position = args.Point*/
+                });
+            });
 
         private string _address;
         public string Address
@@ -61,6 +78,11 @@ namespace EventParkering.ViewModel
             }
         }
 
+        public string ParkName { get; set; }
+        public string ParkLat { get; set; }
+        public string ParkLon { get; set; }
+        public string ParkDist { get; set; }
+
         public EventItem SelectedString
         {
             get { return _selectedString; }
@@ -76,6 +98,21 @@ namespace EventParkering.ViewModel
             {
                 _navigationService.GoBackAsync();
             });
+
+            //RestService.ParkDataAsync();
+        }
+
+        public async Task<bool> GetParkingSpot()
+        {
+            try
+            {
+               
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine("Kunde inte hämta pins {0}", err);
+            }
+            return true;
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
