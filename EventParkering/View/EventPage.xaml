@@ -127,7 +127,7 @@
                    BackgroundColor="#F4F4F6" 
                    Margin="20,0,0,0"/>
                 
-            <ListView x:Name="listView" RowHeight="70" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" SeparatorColor="#F4F4F6" ItemsSource="{Binding ItemSource}" SelectedItem="{Binding SelectedEvent}" CachingStrategy="RecycleElement" >
+            <ListView x:Name="listView" RowHeight="70" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" SeparatorColor="#F4F4F6" ItemsSource="{Binding EventList}" SelectedItem="{Binding SelectedEvent}" CachingStrategy="RecycleElement" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

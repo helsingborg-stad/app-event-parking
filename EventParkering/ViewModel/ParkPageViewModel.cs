@@ -20,8 +20,8 @@ namespace EventParkering.ViewModel
             {
                 Pins.Add(new Pin
                 {
-                    /*Label = $"Pin{Pins.Count}",
-                    Position = args.Point*/
+                    Label = $"Pin{Pins.Count}",
+                    Position = args.Point
                 });
             });
 
@@ -98,8 +98,6 @@ namespace EventParkering.ViewModel
             {
                 _navigationService.GoBackAsync();
             });
-
-            //RestService.ParkDataAsync();
         }
 
         public async Task<bool> GetParkingSpot()
@@ -120,9 +118,10 @@ namespace EventParkering.ViewModel
 
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             EventItem = (EventItem)parameters["Event"];
+            //await RestService.ParkDataAsync();
         }
 
         public override void OnNavigatingTo(INavigationParameters parameters)

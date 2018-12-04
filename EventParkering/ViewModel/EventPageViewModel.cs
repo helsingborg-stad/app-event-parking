@@ -12,15 +12,15 @@ namespace EventParkering.ViewModel
         private readonly IRestService _restService;
         private EventItem _eventItem;
         private EventItem _selectedEvent;
-        private List<EventItem> _itemSource;
 
-        public IEnumerable ItemSource
+        private List<EventItem> eventList;
+        public IEnumerable EventList
         {
-            get => _itemSource;
+            get => eventList;
             set
             {
                 if (value != null && value is IEnumerable<EventItem> items)
-                    SetProperty(ref _itemSource, items.ToList());
+                    SetProperty(ref eventList, items.ToList());
             }
         }
 
@@ -53,7 +53,7 @@ namespace EventParkering.ViewModel
 
         private async void LoadEventItems()
         {
-            ItemSource = await _restService.EventDataAsync();
+            EventList = await _restService.EventDataAsync();
         }
     }
 }

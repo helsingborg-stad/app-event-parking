@@ -118,7 +118,7 @@
                 </Label>
             </Grid>
            <StackLayout VerticalOptions="FillAndExpand" Padding="1,10,0,0">
-                <maps:Map x:Name="MyMap" IsShowingUser="true" MyLocationEnabled="true">
+                <maps:Map x:Name="MyMap" IsShowingUser="true" MyLocationEnabled="true" InitialCameraUpdate="55.608548, 12.992234, 14, 30, 60">
                 
                     <maps:Map.Behaviors>
                       <bindings:BindingPinsBehavior Value="{Binding Pins}"/>
