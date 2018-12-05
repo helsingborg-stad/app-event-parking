@@ -9,14 +9,26 @@
     BackgroundColor="White">
     <RelativeLayout>
        <forms:CachedImage Source="background.png" 
-              Aspect="AspectFill"
-              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
-              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-       <StackLayout Padding="0,190,0,0" x:Name="StackPadding">
-            <Label x:Name="FindLabel" 
+                          Aspect="Fill"/>
+       <StackLayout>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/> 
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/> 
+            </Grid.ColumnDefinitions>
+            <Label x:Name="FindLabel" Grid.Row="0" Grid.Column="0" VerticalOptions="End"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
-                   FontSize="30">
+                   FontSize="35">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-ExtraBold</On>
@@ -24,10 +36,10 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="ParkLabel" 
+            <Label x:Name="ParkLabel" Grid.Row="1" Grid.Column="0"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
-                   FontSize="30">
+                   FontSize="35">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-ExtraBold</On>
@@ -35,22 +47,22 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="VersionLabel"
+            <Label x:Name="VersionLabel" Grid.Row="2" Grid.Column="0"
                    HorizontalOptions="CenterAndExpand"
-                   TextColor="Gray"
-                   FontSize="15">
+                   TextColor="#ADADAD"
+                   FontSize="18">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
-                           <On Platform="iOS">Montserrat-Regular</On>
-                           <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
+                           <On Platform="iOS">Montserrat-Bold</On>
+                           <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="InfoLabel"
+            <Label x:Name="InfoLabel" Grid.Row="3" Grid.Column="0"
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="White"
                    HorizontalTextAlignment="Center"
-                   Margin="30,70,30,30">
+                   Margin="30,0,30,0">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-Regular</On>
@@ -58,7 +70,7 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Button x:Name="TryLabel" 
+            <Button x:Name="TryLabel" Grid.Row="4" Grid.Column="0"
                     HorizontalOptions="CenterAndExpand" 
                     Command="{Binding FindEvents}"
                     TextColor="White"
@@ -72,7 +84,7 @@
                        </OnPlatform>
                    </Button.FontFamily>
             </Button>
-            <Label x:Name="KnowMoreLabel"  
+            <Label x:Name="KnowMoreLabel"  Grid.Row="5" Grid.Column="0" VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
                    FontSize="15">
@@ -83,6 +95,7 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
+         </Grid>
        </StackLayout>
     </RelativeLayout>
 </ContentPage>

@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using EventParkering.Services;
 using Plugin.Geolocator;
+using Prism.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -11,19 +13,25 @@ namespace EventParkering.View
 {
     public partial class ParkPage : ContentPage
     {
+        public double latitude { get; set; }
+        public double longitude { get; set; }
+        INavigationService navigationService;
+        ParkService ParkService;
+        private ViewModel.ParkPageViewModel parkViewModel;
+
         public ParkPage()
         {
             InitializeComponent();
 
             NavigationPage.SetHasNavigationBar(this, false);
 
-            GetMap();
+            //GetMap();
 
             ClosestLabel.Text = Language.AppResource.ClosestLabelResx;
             ParkingSpotLabel.Text = Language.AppResource.ParkingSpotLabelResx;
             MapShowsLabel.Text = Language.AppResource.MapShowsLabelResx;
 
-            if (Device.RuntimePlatform == Device.iOS)
+            /*if (Device.RuntimePlatform == Device.iOS)
             {
                 TitleLabel.Margin = new Thickness(60, 30, 30, 0);
                 BackButton.Margin = new Thickness(-40, 30, 0, 0);
@@ -32,29 +40,27 @@ namespace EventParkering.View
             {
                 TitleLabel.Margin = new Thickness(70, 0, 30, 0);
                 BackButton.Margin = new Thickness(-40, 0, 0, 0);
-            }
+            }*/
         }
 
-        void GetMap()
+        async void GetMap()
         {
-            var assembly = typeof(ParkPage).GetTypeInfo().Assembly;
+            //parkViewModel = new ViewModel.ParkPageViewModel(navigationService, ParkService);
+
+            /*var assembly = typeof(ParkPage).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream("EventParkering.Services.SilverJsonStyle.json");
             string Json = "";
             using (var reader = new StreamReader(stream))
             {
                 Json = reader.ReadToEnd();
             }
-            MyMap.MapStyle = MapStyle.FromJson(Json);
+            MyMap.MapStyle = MapStyle.FromJson(Json);*/
 
-            var locator = CrossGeolocator.Current;
+           // await GetCurrentLocation();
 
-            var position = locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+            //await parkViewModel.GetParkingSpot();
+        }       
 
-            GetCurrentLocation();
-        }
-
-        public double latitude { get; set; }
-        public double longitude { get; set; }
         private async Task<bool> GetCurrentLocation()
         {
             var locator = CrossGeolocator.Current;
@@ -69,7 +75,7 @@ namespace EventParkering.View
 
                 latitude = position.Latitude;
                 longitude = position.Longitude;
-                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(latitude, longitude), Distance.FromMeters(10000)), true);
+               // MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(56.043980, 12.688751), Distance.FromMeters(10000)), true);
 
                 return true;
             }

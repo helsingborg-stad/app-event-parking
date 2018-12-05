@@ -17,14 +17,6 @@ namespace EventParkering.View
             TryLabel.Text = Language.AppResource.TryLabelResx;
             KnowMoreLabel.Text = Language.AppResource.KnowMoreLabelResx;
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                StackPadding.Padding = new Thickness(0, 190, 0, 0);
-            }
-            else
-            {
-                StackPadding.Padding = new Thickness(0, 170, 0, 0);
-            }
         }
     }
 }

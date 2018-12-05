@@ -134,7 +134,7 @@
                             <ViewCell.View>
                                 <StackLayout VerticalOptions="Center" Margin="30,0,0,0" Orientation="Horizontal">
                                         
-                                   <Label Text="{Binding name}" TextColor="Black" FontSize="20" VerticalOptions="Center">
+                                   <Label Text="{Binding name}" TextColor="Black" FontSize="20" VerticalOptions="Center" Margin="0,0,30,0">
                                        <Label.FontFamily>
                                            <OnPlatform x:TypeArguments="x:String">
                                                <On Platform="iOS">Montserrat-Bold</On>

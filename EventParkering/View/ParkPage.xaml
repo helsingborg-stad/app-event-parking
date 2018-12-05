@@ -6,7 +6,6 @@
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
      x:Class="EventParkering.View.ParkPage"
     BackgroundColor="White">
     <ContentPage.Content>
@@ -16,14 +15,13 @@
                     <RowDefinition>
                         <RowDefinition.Height>
                             <OnPlatform x:TypeArguments="GridLength"
-                                          iOS="80"
+                                          iOS="100"
                                           Android="50"/>
                         </RowDefinition.Height>
                     </RowDefinition>
-                    <RowDefinition Height="0.5"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="20"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 
@@ -31,23 +29,19 @@
                     <ColumnDefinition Width="*"/>   
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-               
-                <Button Grid.Row="0" 
-                        Grid.Column="0" 
-                        Image="arrowLeft.png"
+               <StackLayout Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0" >
+                <Button 
+                        Image="arrowLeft.png" 
                         Command="{Binding GoBack}"
-                        BackgroundColor="White"
-                        x:Name="BackButton"/>
+                        BackgroundColor="Transparent"
+                        Margin="30,0,0,0"/>
                 <Label Text="{Binding Title}"
                        FontSize="20"
                        TextColor="Black"
-                       Grid.Row="0" 
-                       Grid.Column="0" 
-                       Grid.ColumnSpan="3" 
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center"
                        LineBreakMode="TailTruncation"
-                       x:Name="TitleLabel">
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,0,30,0">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Medium</On>
@@ -55,9 +49,10 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
+                    </StackLayout>
                 <Label FontSize="30" 
                        TextColor="Black" 
-                       Grid.Row="2" 
+                       Grid.Row="1" 
                        Grid.Column="0" 
                        Grid.ColumnSpan="2"
                        x:Name="ClosestLabel" 
@@ -72,7 +67,7 @@
                 </Label>
                 <Label FontSize="30" 
                        TextColor="Black" 
-                       Grid.Row="3"
+                       Grid.Row="2"
                        Grid.Column="0" 
                        Grid.ColumnSpan="3" 
                        x:Name="ParkingSpotLabel" 
@@ -84,17 +79,18 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-                <forms:CachedImage Grid.Row="3" 
+                <forms:CachedImage Grid.Row="2" 
                                    Grid.Column="2" 
                                    Source="car.png" 
                                    Margin="-30,0,0,0"/>
                 <Label FontSize="15" 
                        TextColor="#9C9C9C" 
-                       Grid.Row="4" 
+                       Grid.Row="3" 
                        Grid.Column="0"
                        x:Name="MapShowsLabel" 
                        Margin="30,0,0,0" 
-                       Grid.ColumnSpan="3">
+                       Grid.ColumnSpan="3"
+                       VerticalOptions="End">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Regular</On>
@@ -105,7 +101,7 @@
                 <Label Text="{Binding Address}"
                        FontSize="15" 
                        TextColor="Black"
-                       Grid.Row="5" 
+                       Grid.Row="4" 
                        Grid.Column="0"  
                        Margin="30,0,0,0" 
                        Grid.ColumnSpan="3">
@@ -117,17 +113,10 @@
                        </Label.FontFamily>
                 </Label>
             </Grid>
-           <StackLayout VerticalOptions="FillAndExpand" Padding="1,10,0,0">
-                <maps:Map x:Name="MyMap" IsShowingUser="true" MyLocationEnabled="true" InitialCameraUpdate="55.608548, 12.992234, 14, 30, 60">
-                
-                    <maps:Map.Behaviors>
-                      <bindings:BindingPinsBehavior Value="{Binding Pins}"/>
-                      <bindings:MapClickedToCommandBehavior Command="{Binding MapClickedCommand}"/>
-                    </maps:Map.Behaviors>
-                    
-                </maps:Map>
-            </StackLayout>
+            
+             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
         </StackLayout> 
+        
     </ContentPage.Content>
 </ContentPage>
 
