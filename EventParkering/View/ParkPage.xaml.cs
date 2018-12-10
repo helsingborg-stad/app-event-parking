@@ -45,7 +45,7 @@ namespace EventParkering.View
 
         async void GetMap()
         {
-            //parkViewModel = new ViewModel.ParkPageViewModel(navigationService, ParkService);
+            parkViewModel = new ViewModel.ParkPageViewModel(navigationService, ParkService);
 
             /*var assembly = typeof(ParkPage).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream("EventParkering.Services.SilverJsonStyle.json");
@@ -56,10 +56,11 @@ namespace EventParkering.View
             }
             MyMap.MapStyle = MapStyle.FromJson(Json);*/
 
-           // await GetCurrentLocation();
+            // await GetCurrentLocation();
 
             //await parkViewModel.GetParkingSpot();
-        }       
+
+        }
 
         private async Task<bool> GetCurrentLocation()
         {

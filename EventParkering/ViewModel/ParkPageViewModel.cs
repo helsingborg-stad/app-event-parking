@@ -14,6 +14,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
+using Plugin.ExternalMaps;
 
 namespace EventParkering.ViewModel
 {
@@ -24,7 +25,6 @@ namespace EventParkering.ViewModel
 
         public Xamarin.Forms.GoogleMaps.Map Map { get; private set; }
 
-        ///private readonly IRestService _restService;
         ParkService _parkService;
 
 
@@ -64,7 +64,7 @@ namespace EventParkering.ViewModel
         }
 
         private EventItem _eventItem;
-        public EventItem EventItem
+        public EventItem eventItem
         {
             get => _eventItem;
             set
@@ -84,7 +84,6 @@ namespace EventParkering.ViewModel
         public ParkPageViewModel(INavigationService navigationService, ParkService parkService)
         : base(navigationService)
         {
-            //_restService = restService;
             _parkService = parkService;
             GoBack = new DelegateCommand(() =>
             {
@@ -92,33 +91,26 @@ namespace EventParkering.ViewModel
             });
 
             Map = new Xamarin.Forms.GoogleMaps.Map();
-            Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(56.043980, 12.688751), Xamarin.Forms.GoogleMaps.Distance.FromMeters(1000)));
+            Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(56.043980, 12.688751), Distance.FromMeters(1000)));
             Map.MyLocationEnabled = true;
-
-
-            //Map.InitialCameraUpdate(55.608548, 12.992234, 14, 30, 60);
-            //Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(18.48, -69.93), Xamarin.Forms.GoogleMaps.Distance.FromKilometers(40)));
-
-            //callParkingSpot.Execute(true);
         }
-
-        //Command callParkingSpot => new Command(async () => { await GetParkingSpot(); });
-
 
         public async Task GetParkingSpot()
         {
             GetMapStyle();
             await GetCurrentLocation();
-            var parkDataAsync = await _parkService.ParkDataAsync(581381, "1000");
-            //return;
+            var parkDataAsync = await _parkService.ParkDataAsync(eventItem.id, "99999999999");
 
             try
             {
-
                 foreach (var i in parkDataAsync)
                 {
-                    var parklat = Convert.ToDouble(i.lat, System.Globalization.CultureInfo.InvariantCulture);
-                    var parklon = Convert.ToDouble(i.lat, System.Globalization.CultureInfo.InvariantCulture);
+                    BitmapDescriptor SetPinIconStream(string embeddedResource)
+                    {
+                        var assembly = typeof(ParkPageViewModel).GetTypeInfo().Assembly;
+                        var stream = assembly.GetManifestResourceStream($"" + embeddedResource);
+                        return BitmapDescriptorFactory.FromStream(stream);
+                    }
 
                     var eventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
                     var eventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
@@ -126,25 +118,33 @@ namespace EventParkering.ViewModel
                     var parkPin = new Pin
                     {
                         Type = PinType.Place,
-                        Position = new Position(56.043980, 12.688751),
-                        Label = "hej"
+                        Position = new Position(i.lat, i.lon),
+                        Label = i.name + " - Klicka här för att bli navigerad!",
+                        Icon = SetPinIconStream("EventParkering.chev.png"),
                     };
 
                     var eventPin = new Pin
                     {
                         Type = PinType.Place,
-                        Position = new Position(56.043980, 12.688751),
-                        Label = "fin"
+                        Position = new Position(eventlat, eventlon),
+                        Label = Title,
                     };
                     Map.Pins.Add(parkPin);
                     Map.Pins.Add(eventPin);
+
+                    parkPin.Clicked += (sender, args) =>
+                    {
+                        CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
+                    };
                 }
             }
             catch (Exception err)
             {
-                Debug.WriteLine("Kunde inte hämta pins {0}", err);
+                Debug.WriteLine("Error: {0}", err);
             }
         }
+
+       
 
         public void GetMapStyle()
         {
@@ -172,7 +172,6 @@ namespace EventParkering.ViewModel
 
                 latitude = position.Latitude;
                 longitude = position.Longitude;
-                //Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(latitude, longitude), Distance.FromMeters(10000)), true);
 
                 return true;
             }
@@ -190,11 +189,12 @@ namespace EventParkering.ViewModel
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            EventItem = (EventItem)parameters["Event"];           
+          
         }
 
         public async override void OnNavigatingTo(INavigationParameters parameters)
         {
+            eventItem = (EventItem)parameters["Event"];
             await GetParkingSpot();
         }
     }

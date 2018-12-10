@@ -24,7 +24,7 @@
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
-    <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
+    <PackageReference Include="Xam.Plugin.ExternalMaps" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
@@ -32,16 +32,17 @@
     <Folder Include="Language\" />
     <Folder Include="Model\" />
     <Folder Include="Services\" />
-    <Folder Include="Objects\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Language\AppResources.Designer.cs" />
     <Compile Remove="Model\Services\ItemManager.cs" />
     <Compile Remove="View\BaseViewModel.cs" />
+    <Compile Remove="Objects\CustomMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="waving.gif" />
     <EmbeddedResource Include="Services\SilverJsonStyle.json" />
+    <EmbeddedResource Include="chev.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Language\AppResource.resx">
@@ -57,5 +58,7 @@
   <ItemGroup>
     <None Remove="waving.gif" />
     <None Remove="Services\SilverJsonStyle.json" />
+    <None Remove="chev.png" />
+    <None Remove="group.png" />
   </ItemGroup>
 </Project>

@@ -94,6 +94,9 @@
     <PackageReference Include="Xamarin.Forms.GoogleMaps">
       <Version>3.0.4</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.ExternalMaps">
+      <Version>4.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

@@ -6,7 +6,7 @@
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-     x:Class="EventParkering.View.ParkPage"
+    x:Class="EventParkering.View.ParkPage"
     BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
@@ -114,7 +114,7 @@
                 </Label>
             </Grid>
             
-             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  />
         </StackLayout> 
         
     </ContentPage.Content>
