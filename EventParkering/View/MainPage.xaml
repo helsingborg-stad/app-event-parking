@@ -7,28 +7,17 @@
     mvvm:ViewModelLocator.AutowireViewModel="True"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     BackgroundColor="White">
+    <StackLayout>
     <RelativeLayout>
-       <forms:CachedImage Source="background.png" 
-                          Aspect="Fill"/>
-       <StackLayout>
-            <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="7*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="Auto"/> 
-            </Grid.RowDefinitions>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/> 
-            </Grid.ColumnDefinitions>
-            <Label x:Name="FindLabel" Grid.Row="0" Grid.Column="0" VerticalOptions="End"
+       <forms:CachedImage Source="b.png" 
+                          Aspect="AspectFill"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+       <StackLayout Padding="0,130,0,0">
+            <Label x:Name="FindLabel" 
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
-                   FontSize="35">
+                   FontSize="30">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-ExtraBold</On>
@@ -36,10 +25,10 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="ParkLabel" Grid.Row="1" Grid.Column="0"
+            <Label x:Name="ParkLabel" 
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
-                   FontSize="35">
+                   FontSize="30">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-ExtraBold</On>
@@ -47,10 +36,10 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="VersionLabel" Grid.Row="2" Grid.Column="0"
+            <Label x:Name="VersionLabel"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="#ADADAD"
-                   FontSize="18">
+                   FontSize="16">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-Bold</On>
@@ -58,11 +47,11 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Label x:Name="InfoLabel" Grid.Row="3" Grid.Column="0"
+            <Label x:Name="InfoLabel" 
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="White"
                    HorizontalTextAlignment="Center"
-                   Margin="30,0,30,0">
+                   Margin="30,50,30,0">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-Regular</On>
@@ -70,13 +59,14 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <Button x:Name="TryLabel" Grid.Row="4" Grid.Column="0"
+            <Button x:Name="TryLabel" 
                     HorizontalOptions="CenterAndExpand" 
                     Command="{Binding FindEvents}"
                     TextColor="White"
                     BackgroundColor="#2BCD71"
                     WidthRequest="320"
-                    FontSize="15">
+                    FontSize="15"
+                    Margin="0,20,0,0">
                    <Button.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-Regular</On>
@@ -84,10 +74,11 @@
                        </OnPlatform>
                    </Button.FontFamily>
             </Button>
-            <Label x:Name="KnowMoreLabel"  Grid.Row="5" Grid.Column="0" VerticalOptions="Center"
+            <Label x:Name="KnowMoreLabel"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="White"
-                   FontSize="15">
+                   FontSize="15"
+                   Margin="0,25,0,0">
                    <Label.FontFamily>
                        <OnPlatform x:TypeArguments="x:String">
                            <On Platform="iOS">Montserrat-Regular</On>
@@ -95,7 +86,7 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-         </Grid>
        </StackLayout>
     </RelativeLayout>
+   </StackLayout>
 </ContentPage>

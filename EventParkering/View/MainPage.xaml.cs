@@ -16,7 +16,6 @@ namespace EventParkering.View
             InfoLabel.Text = Language.AppResource.InfoLabelResx;
             TryLabel.Text = Language.AppResource.TryLabelResx;
             KnowMoreLabel.Text = Language.AppResource.KnowMoreLabelResx;
-
         }
     }
 }

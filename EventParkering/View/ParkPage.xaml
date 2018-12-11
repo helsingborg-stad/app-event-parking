@@ -113,7 +113,6 @@
                        </Label.FontFamily>
                 </Label>
             </Grid>
-            
              <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  />
         </StackLayout> 
         

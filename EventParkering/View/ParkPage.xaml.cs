@@ -45,7 +45,7 @@ namespace EventParkering.View
 
         async void GetMap()
         {
-            parkViewModel = new ViewModel.ParkPageViewModel(navigationService, ParkService);
+            //parkViewModel = new ViewModel.ParkPageViewModel(navigationService, ParkService);
 
             /*var assembly = typeof(ParkPage).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream("EventParkering.Services.SilverJsonStyle.json");

@@ -2487,7 +2487,7 @@ namespace EventParkering.Droid
 			public const int avd_show_password_3 = 2130837838;
 			
 			// aapt resource value: 0x7f020056
-			public const int background = 2130837590;
+			public const int b = 2130837590;
 			
 			// aapt resource value: 0x7f020057
 			public const int car = 2130837591;
