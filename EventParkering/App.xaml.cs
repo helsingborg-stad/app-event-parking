@@ -19,9 +19,9 @@ namespace EventParkering
 
         protected override async void OnInitialized()
         {
-            AppCenter.Start("ios=99fb363d-2ed3-4bd5-bc53-c75d88915624;" +
-                  "android={4e16bab9 - 8bcc - 4b13 - 8801 - 20f4b8868aab}",
-                            typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("android=4e16bab9-8bcc-4b13-8801-20f4b8868aab;" +
+                            "ios=99fb363d-2ed3-4bd5-bc53-c75d88915624",
+                  typeof(Analytics), typeof(Crashes));
 
             InitializeComponent();
 

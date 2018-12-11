@@ -2465,26 +2465,26 @@ namespace EventParkering.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020149
-			public const int avd_hide_password_1 = 2130837833;
-			
 			// aapt resource value: 0x7f02014a
-			public const int avd_hide_password_2 = 2130837834;
+			public const int avd_hide_password_1 = 2130837834;
 			
 			// aapt resource value: 0x7f02014b
-			public const int avd_hide_password_3 = 2130837835;
+			public const int avd_hide_password_2 = 2130837835;
+			
+			// aapt resource value: 0x7f02014c
+			public const int avd_hide_password_3 = 2130837836;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f02014c
-			public const int avd_show_password_1 = 2130837836;
-			
 			// aapt resource value: 0x7f02014d
-			public const int avd_show_password_2 = 2130837837;
+			public const int avd_show_password_1 = 2130837837;
 			
 			// aapt resource value: 0x7f02014e
-			public const int avd_show_password_3 = 2130837838;
+			public const int avd_show_password_2 = 2130837838;
+			
+			// aapt resource value: 0x7f02014f
+			public const int avd_show_password_3 = 2130837839;
 			
 			// aapt resource value: 0x7f020056
 			public const int b = 2130837590;
@@ -3194,11 +3194,11 @@ namespace EventParkering.Droid
 			// aapt resource value: 0x7f020141
 			public const int notification_icon_background = 2130837825;
 			
-			// aapt resource value: 0x7f020147
-			public const int notification_template_icon_bg = 2130837831;
-			
 			// aapt resource value: 0x7f020148
-			public const int notification_template_icon_low_bg = 2130837832;
+			public const int notification_template_icon_bg = 2130837832;
+			
+			// aapt resource value: 0x7f020149
+			public const int notification_template_icon_low_bg = 2130837833;
 			
 			// aapt resource value: 0x7f020142
 			public const int notification_tile_bg = 2130837826;
@@ -3214,6 +3214,9 @@ namespace EventParkering.Droid
 			
 			// aapt resource value: 0x7f020146
 			public const int tooltip_frame_light = 2130837830;
+			
+			// aapt resource value: 0x7f020147
+			public const int waving = 2130837831;
 			
 			static Drawable()
 			{

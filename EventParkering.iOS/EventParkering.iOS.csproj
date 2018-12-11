@@ -228,5 +228,6 @@
     <BundleResource Include="Resources\back.png" />
     <BundleResource Include="Resources\ba.png" />
     <BundleResource Include="Resources\b.png" />
+    <BundleResource Include="Resources\waving.gif" />
   </ItemGroup>
 </Project>

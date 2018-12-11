@@ -11,10 +11,10 @@
     BackgroundColor="White">
    <ContentPage.Content>
        <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="0,70,0,0">
          <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="90"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="40"/>
@@ -29,11 +29,11 @@
                 <ColumnDefinition Width="*"/> 
                 <ColumnDefinition Width="*"/> 
             </Grid.ColumnDefinitions>
-           
-            <Label Grid.Row="0" 
-                   Grid.Column="0"
+           <StackLayout Orientation="Horizontal" Grid.Row="0" 
+                   Grid.Column="0" Grid.ColumnSpan="3" Spacing="15">
+            <Label
                    x:Name="HelloLabel"
-                   Margin="30,50,0,0"
+                   Margin="30,0,0,0"
                    FontSize="30"
                    TextColor="Black">
                    <Label.FontFamily>
@@ -43,12 +43,9 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <ff:CachedImage x:Name="WaveGif" 
-                            Source="resource://EventParkering.waving.gif" 
-                            Grid.Row="0" 
-                            Grid.Column="1"/>
-            <Label Grid.Row="0" 
-                   Grid.Column="2"
+            <ff:CachedImage x:Name="WaveGif"
+                            Source="waving.gif" />
+            <Label 
                    Text=","
                    FontSize="30"
                    TextColor="Black"
@@ -60,6 +57,7 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
+            </StackLayout>
             <Label Grid.Row="1" 
                    Grid.Column="0"
                    Grid.ColumnSpan="3"
@@ -135,7 +133,7 @@
                             <ViewCell.View>
                                 <StackLayout VerticalOptions="Center" Margin="30,0,0,0" Orientation="Horizontal">
                                         
-                                   <Label Text="{Binding name}" TextColor="Black" FontSize="20" VerticalOptions="Center" Margin="0,0,30,0">
+                                   <Label Text="{Binding name}" TextColor="Black" FontSize="20" VerticalOptions="Center" Margin="0,0,30,0" MaxLines="2">
                                        <Label.FontFamily>
                                            <OnPlatform x:TypeArguments="x:String">
                                                <On Platform="iOS">Montserrat-Bold</On>

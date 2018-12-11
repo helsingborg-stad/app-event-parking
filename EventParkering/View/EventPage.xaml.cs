@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using FFImageLoading.Forms;
 using Xamarin.Forms;
 
 namespace EventParkering.View
@@ -22,16 +23,14 @@ namespace EventParkering.View
             Drivelabel.Text = Language.AppResource.DrivelabelResx;
             ChooseLabel.Text = Language.AppResource.ChooseLabelResx;
 
-            if (Device.RuntimePlatform == Device.iOS)
+            /*if (Device.RuntimePlatform == Device.iOS)
             {
-                WaveGif.Margin = new Thickness(-130, 45, 0, 0);
-                CommaLabel.Margin = new Thickness(-100, 50, 0, 0);  
+                WaveGif = new CachedImage { Source = "resource://EventParkering.waving.gif" };
             }
             else
             {
-                WaveGif.Margin = new Thickness(-180, 55, 0, 0);
-                CommaLabel.Margin = new Thickness(-135, 50, 0, 0);
-            }
+                WaveGif = new CachedImage { Source = "resource://EventParkering.waving.gif" };
+            }*/
 
             listView.ItemSelected += (sender, args) => listView.SelectedItem = null;
         }

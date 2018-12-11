@@ -157,6 +157,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\b.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\b.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\b.png" />
+    <AndroidResource Include="Resources\drawable\waving.gif" />
+    <AndroidResource Include="Resources\drawable-hdpi\waving.gif" />
+    <AndroidResource Include="Resources\drawable-xhdpi\waving.gif" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\waving.gif" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\waving.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
