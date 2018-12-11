@@ -89,10 +89,9 @@ namespace EventParkering.ViewModel
                 _navigationService.GoBackAsync();
             });
 
-            Map = new Xamarin.Forms.GoogleMaps.Map();  
+            Map = new Xamarin.Forms.GoogleMaps.Map();
 
             Map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(56.04673, 12.69437), 15d));
-            //Map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(56.04673, 12.69437), 15d));
 
             Map.MyLocationEnabled = true;
         }
@@ -126,7 +125,7 @@ namespace EventParkering.ViewModel
                         Type = PinType.Place,
                         Position = new Position(i.lat, i.lon),
                         Label = i.name + " - " + i.dist + " meter från eventet.",
-                        Icon = SetPinIconStream("EventParkering.chev.png"),
+                        Icon = SetPinIconStream("EventParkering.parkingSpot.png"),
                     };
 
                     var eventPin = new Pin
@@ -148,9 +147,7 @@ namespace EventParkering.ViewModel
             {
                 Debug.WriteLine("Error: {0}", err);
             }
-        }
-
-       
+        }       
 
         public void GetMapStyle()
         {
@@ -203,6 +200,8 @@ namespace EventParkering.ViewModel
             eventItem = (EventItem)parameters["Event"];
             await GetParkingSpot();
         }
+
+
 
        /* public class CameraFocusData
         {

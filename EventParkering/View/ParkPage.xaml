@@ -19,8 +19,8 @@
                                           Android="50"/>
                         </RowDefinition.Height>
                     </RowDefinition>
-                    <RowDefinition Height="25"/>
                     <RowDefinition Height="35"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
@@ -30,18 +30,17 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                <StackLayout Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0" >
-                <Button 
-                        Image="arrowLeft.png" 
+                <Button x:Name="buttonMargin"
+                        Image="arrow.png"
                         Command="{Binding GoBack}"
-                        BackgroundColor="Transparent"
-                        Margin="30,0,0,0"/>
+                        BackgroundColor="Transparent"/>
                 <Label Text="{Binding Title}"
                        FontSize="20"
                        TextColor="Black"
                        LineBreakMode="TailTruncation"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand"
-                       Margin="0,0,30,0">
+                       Margin="0,0,60,0">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Medium</On>

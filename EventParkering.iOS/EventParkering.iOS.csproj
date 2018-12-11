@@ -224,10 +224,8 @@
     <BundleResource Include="Resources\Montserrat-Medium.ttf" />
     <BundleResource Include="Resources\Montserrat-Regular.ttf" />
     <BundleResource Include="Resources\car.png" />
-    <BundleResource Include="Resources\arrowLeft.png" />
-    <BundleResource Include="Resources\back.png" />
-    <BundleResource Include="Resources\ba.png" />
     <BundleResource Include="Resources\b.png" />
     <BundleResource Include="Resources\waving.gif" />
+    <BundleResource Include="Resources\arrow.png" />
   </ItemGroup>
 </Project>

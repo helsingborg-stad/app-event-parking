@@ -9,12 +9,19 @@ using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Prism.Services;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using Plugin.Geolocator;
+using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EventParkering
 {
     public partial class App : PrismApplication
     {
+        IPageDialogService _pageDialogService;
+
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
         protected override async void OnInitialized()
@@ -26,6 +33,11 @@ namespace EventParkering
             InitializeComponent();
 
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
+
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                RequestPermissions(_pageDialogService);
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -50,6 +62,37 @@ namespace EventParkering
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+        private async void RequestPermissions(IPageDialogService pageDialogService)
+        {
+            _pageDialogService = pageDialogService;
+
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location);
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                    //Best practice to always check that the key exists
+                    if (results.ContainsKey(Permission.Location))
+                        status = results[Permission.Location];
+                }
+
+                if (status == PermissionStatus.Granted)
+                {
+                    var results = await CrossGeolocator.Current.GetPositionAsync();
+                }
+                else if (status != PermissionStatus.Unknown)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Location Denied", "Cannot continue, try again.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error: {0}", ex);
+            }
         }
     }
 }

@@ -42,9 +42,8 @@
     <Compile Remove="View\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="waving.gif" />
     <EmbeddedResource Include="Services\SilverJsonStyle.json" />
-    <EmbeddedResource Include="chev.png" />
+    <EmbeddedResource Include="parkingSpot.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Language\AppResource.resx">
@@ -58,9 +57,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Remove="waving.gif" />
     <None Remove="Services\SilverJsonStyle.json" />
-    <None Remove="chev.png" />
     <None Remove="group.png" />
+    <None Remove="parkingSpot.png" />
   </ItemGroup>
 </Project>

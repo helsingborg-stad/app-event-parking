@@ -23,15 +23,6 @@ namespace EventParkering.View
             Drivelabel.Text = Language.AppResource.DrivelabelResx;
             ChooseLabel.Text = Language.AppResource.ChooseLabelResx;
 
-            /*if (Device.RuntimePlatform == Device.iOS)
-            {
-                WaveGif = new CachedImage { Source = "resource://EventParkering.waving.gif" };
-            }
-            else
-            {
-                WaveGif = new CachedImage { Source = "resource://EventParkering.waving.gif" };
-            }*/
-
             listView.ItemSelected += (sender, args) => listView.SelectedItem = null;
         }
     }
