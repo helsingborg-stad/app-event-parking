@@ -21,7 +21,7 @@
                     </RowDefinition>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 
@@ -48,7 +48,7 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-                    </StackLayout>
+                </StackLayout>
                 <Label FontSize="30" 
                        TextColor="Black" 
                        Grid.Row="1" 
@@ -64,13 +64,12 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
+                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
                 <Label FontSize="30" 
-                       TextColor="Black" 
-                       Grid.Row="2"
-                       Grid.Column="0" 
-                       Grid.ColumnSpan="3" 
+                       TextColor="Black"
                        x:Name="ParkingSpotLabel" 
-                       Margin="30,0,0,0">
+                       Margin="30,0,0,0"
+                       LineBreakMode="TailTruncation">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Bold</On>
@@ -78,10 +77,8 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-                <forms:CachedImage Grid.Row="2" 
-                                   Grid.Column="2" 
-                                   Source="car.png" 
-                                   Margin="-30,0,0,0"/>
+                <forms:CachedImage Source="car.png" />
+                </StackLayout>
                 <Label FontSize="15" 
                        TextColor="#9C9C9C" 
                        Grid.Row="3" 
@@ -112,9 +109,8 @@
                        </Label.FontFamily>
                 </Label>
             </Grid>
-             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  />
+             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
         </StackLayout> 
-        
     </ContentPage.Content>
 </ContentPage>
 

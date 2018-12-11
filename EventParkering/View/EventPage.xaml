@@ -31,8 +31,7 @@
             </Grid.ColumnDefinitions>
            <StackLayout Orientation="Horizontal" Grid.Row="0" 
                    Grid.Column="0" Grid.ColumnSpan="3" Spacing="15">
-            <Label
-                   x:Name="HelloLabel"
+            <Label x:Name="HelloLabel"
                    Margin="30,0,0,0"
                    FontSize="30"
                    TextColor="Black">
@@ -43,10 +42,8 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <ff:CachedImage x:Name="WaveGif"
-                            Source="waving.gif" />
-            <Label 
-                   Text=","
+            <ff:CachedImage Source="waving.gif" />
+            <Label Text=","
                    FontSize="30"
                    TextColor="Black"
                    x:Name="CommaLabel">
