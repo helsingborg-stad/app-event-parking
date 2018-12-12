@@ -40,6 +40,7 @@
     <Compile Remove="Language\AppResources.Designer.cs" />
     <Compile Remove="Model\Services\ItemManager.cs" />
     <Compile Remove="View\BaseViewModel.cs" />
+    <Compile Remove="CalculateDistance.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Services\SilverJsonStyle.json" />

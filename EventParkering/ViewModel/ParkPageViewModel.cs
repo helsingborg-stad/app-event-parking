@@ -21,6 +21,7 @@ namespace EventParkering.ViewModel
         public double longitude { get; set; }
         public bool IsPinVisible { get; set; } 
         public string NewAddress { get; set; }
+
         public Xamarin.Forms.GoogleMaps.Map Map { get; private set; }
 
         ParkService _parkService;
@@ -140,16 +141,28 @@ namespace EventParkering.ViewModel
                         Label = i.name + " - " + i.dist + " meter från eventet.",
                         Icon = SetPinIconStream("EventParkering.parkingSpot.png"),
                     };
+                    
+                    Map.Pins.Add(parkPin);          
 
-                    Map.Pins.Add(parkPin);            
+                    double R = 6371.0; // Earth's radius
+                    var dLat = (Math.PI / 180) * (i.lat - eventlat);
+                    var dLon = (Math.PI / 180) * (i.lon - eventlon);
+                    var lat1 = (Math.PI / 180) * eventlat;
+                    var lat2 = (Math.PI / 180) * i.lat;
 
-                    IsPinVisible = true;
+                    var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) + Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
+                    var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+                    var d = R * c; // distance in Km.
+
+                    Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(eventlat, eventlon), Distance.FromKilometers(d)));
+
+                    /*IsPinVisible = true;
                     Map.PinClicked += (sender, args) =>
                     {
 
                         NewAddress = i.name;
                         Debug.WriteLine("hej");
-                    };
+                    };*/
                     parkPin.Clicked += (sender, args) =>
                     {
                         CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
@@ -158,8 +171,6 @@ namespace EventParkering.ViewModel
 
                 var neweventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
                 var neweventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
-
-
             }
             catch (Exception err)
             {
