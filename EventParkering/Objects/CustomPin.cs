@@ -1,10 +1,10 @@
-﻿/*using System;
+﻿using System;
 using Xamarin.Forms.GoogleMaps;
 
 namespace EventParkering.Objects
 {
-    public class CustomPin : Pin
+    public class CustomPin
     {
-        public string Url { get; set; }
+
     }
-}*/
+}

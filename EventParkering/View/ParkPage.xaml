@@ -110,6 +110,15 @@
                 </Label>
             </Grid>
              <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            
+            <AbsoluteLayout>
+                
+                <Label BackgroundColor="Black" Text="{Binding NewAddress}" TextColor="Black"
+                 IsVisible = "{Binding IsPinVisible}" 
+                 AbsoluteLayout.LayoutBounds = "0.5, 0.95, 0.95, 0.1" AbsoluteLayout.LayoutFlags = "All"/>
+                
+            </AbsoluteLayout>
+            
         </StackLayout> 
     </ContentPage.Content>
 </ContentPage>

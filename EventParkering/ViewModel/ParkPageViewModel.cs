@@ -10,14 +10,17 @@ using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms.GoogleMaps;
 using Plugin.ExternalMaps;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EventParkering.ViewModel
 {
-    public class ParkPageViewModel : BaseViewModel
+    public class ParkPageViewModel : BaseViewModel 
     {
         public double latitude { get; set; }
         public double longitude { get; set; }
-
+        public bool IsPinVisible { get; set; } 
+        public string NewAddress { get; set; }
         public Xamarin.Forms.GoogleMaps.Map Map { get; private set; }
 
         ParkService _parkService;
@@ -91,6 +94,7 @@ namespace EventParkering.ViewModel
             Map.MyLocationEnabled = true;
         }
 
+
         public async Task GetParkingSpot()
         {
             GetMapStyle();
@@ -99,19 +103,35 @@ namespace EventParkering.ViewModel
 
             try
             {
+                var eventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
+                var eventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
+
+                var eventPin = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = new Position(eventlat, eventlon),
+                    Label = Title,
+                };
+                
+                Map.Pins.Add(eventPin);
+
+                parkDataAsync.OrderBy(x => x.dist);
+
+                int loopIndex = 0;
+
                 foreach (var i in parkDataAsync)
                 {
+                    if (loopIndex > 4)
+                        return;
+
+                    loopIndex++;
+
                     BitmapDescriptor SetPinIconStream(string embeddedResource)
                     {
                         var assembly = typeof(ParkPageViewModel).GetTypeInfo().Assembly;
                         var stream = assembly.GetManifestResourceStream($"" + embeddedResource);
                         return BitmapDescriptorFactory.FromStream(stream);
                     }
-
-                    var eventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
-                    var eventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
-
-                    Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(eventlat, eventlon), Distance.FromMeters(250)));
 
                     var parkPin = new Pin
                     {
@@ -121,20 +141,25 @@ namespace EventParkering.ViewModel
                         Icon = SetPinIconStream("EventParkering.parkingSpot.png"),
                     };
 
-                    var eventPin = new Pin
-                    {
-                        Type = PinType.Place,
-                        Position = new Position(eventlat, eventlon),
-                        Label = Title,
-                    };
-                    Map.Pins.Add(parkPin);
-                    Map.Pins.Add(eventPin);
+                    Map.Pins.Add(parkPin);            
 
+                    IsPinVisible = true;
+                    Map.PinClicked += (sender, args) =>
+                    {
+
+                        NewAddress = i.name;
+                        Debug.WriteLine("hej");
+                    };
                     parkPin.Clicked += (sender, args) =>
                     {
                         CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
                     };
                 }
+
+                var neweventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
+                var neweventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
+
+
             }
             catch (Exception err)
             {
@@ -192,6 +217,6 @@ namespace EventParkering.ViewModel
         {
             eventItem = (EventItem)parameters["Event"];
             await GetParkingSpot();
-        }      
+        }
     }
 }
