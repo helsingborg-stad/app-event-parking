@@ -25,13 +25,6 @@ namespace EventParkering.ViewModel
             }
         }
 
-        private EventItem _eventItem;
-        public EventItem EventtItem
-        {
-            get => _eventItem;
-            set => SetProperty(ref _eventItem, value);
-        }
-
         private EventItem _selectedEvent;
         public EventItem SelectedEvent
         {
@@ -51,46 +44,11 @@ namespace EventParkering.ViewModel
         : base(navigationService)
         {
             _restService = restService;
-            LoadEventItems();
         }
 
-        private async void LoadEventItems()
+        public async override void OnNavigatingTo(INavigationParameters parameters)
         {
             EventList = await _restService.EventDataAsync();
-            /*var e = await _restService.ParkDataAsync(581381, "1000");
-
-            try
-            {
-                // så?
-                foreach (var i in e)
-                {
-                    var parklat = Convert.ToDouble(i.lat, System.Globalization.CultureInfo.InvariantCulture);
-                    var parklon = Convert.ToDouble(i.lat, System.Globalization.CultureInfo.InvariantCulture);
-
-                    //var eventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
-                    //var eventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
-
-                    var parkPin = new Pin
-                    {
-                        Type = PinType.Place,
-                        Position = new Position(parklat, parklon),
-                        Label = i.name
-                    };
-
-                    var eventPin = new Pin
-                    {
-                        Type = PinType.Place,
-                        Position = new Position(eventlat, eventlon),
-                        Label = Title
-                    };
-                }
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine("Kunde inte hämta pins {0}", err);
-            }*/
-
-
         }
     }
 }

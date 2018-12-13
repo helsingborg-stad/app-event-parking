@@ -12,19 +12,49 @@ using Xamarin.Forms.GoogleMaps;
 using Plugin.ExternalMaps;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections.ObjectModel;
+using Prism.Services;
 
 namespace EventParkering.ViewModel
 {
     public class ParkPageViewModel : BaseViewModel 
     {
+        private readonly Dictionary<Pin, ParkItem> _pinVsParkItems = new Dictionary<Pin, ParkItem>();
+        public DelegateCommand GoBack { get; set; }
+        public DelegateCommand NavigateMe { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
-        public bool IsPinVisible { get; set; } 
-        public string NewAddress { get; set; }
-
-        public Xamarin.Forms.GoogleMaps.Map Map { get; private set; }
-
+        public Map Map { get; private set; }
+        IPageDialogService _pageDialogService;
         ParkService _parkService;
+
+        private bool _isPinVisible;
+        public bool IsPinVisible 
+        {
+            get
+            {
+                return _isPinVisible;
+            }
+            set
+            {
+                _isPinVisible = value;
+                RaisePropertyChanged(nameof(IsPinVisible));
+            }
+        }
+
+        private string _newaddress;
+        public string NewAddress
+        {
+            get
+            {
+                return _newaddress;
+            }
+            set
+            {
+                _newaddress = value;
+                RaisePropertyChanged(nameof(NewAddress));
+            }
+        }
 
         private string _address;
         public string Address
@@ -77,24 +107,25 @@ namespace EventParkering.ViewModel
             }
         }
 
-        public DelegateCommand GoBack { get; set; }
-
-        public ParkPageViewModel(INavigationService navigationService, ParkService parkService)
+        public ParkPageViewModel(INavigationService navigationService, ParkService parkService, IPageDialogService pageDialogService)
         : base(navigationService)
         {
             _parkService = parkService;
+            _pageDialogService = pageDialogService;
             GoBack = new DelegateCommand(() =>
             {
                 _navigationService.GoBackAsync();
             });
 
-            Map = new Xamarin.Forms.GoogleMaps.Map();
-
+            Map = new Map();
             Map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(56.04673, 12.69437), 15d));
-
             Map.MyLocationEnabled = true;
-        }
 
+            /*NavigateMe = new DelegateCommand(() =>
+            {
+                CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
+            });*/
+        }
 
         public async Task GetParkingSpot()
         {
@@ -111,15 +142,30 @@ namespace EventParkering.ViewModel
                 {
                     Type = PinType.Place,
                     Position = new Position(eventlat, eventlon),
-                    Label = Title,
+                    Label = Title
                 };
                 
                 Map.Pins.Add(eventPin);
 
+                Map.PinClicked += (sender, e) =>
+                {
+                    IsPinVisible = true;
+                    NewAddress = (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].name : Title) + (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].dist:"");
+                    Debug.WriteLine("hey");
+                    Map.Pins.Remove(e.Pin);
+                    Map.SelectedPin = null;
+                    Map.Pins.Add(e.Pin);
+                };
+
+                Map.MapClicked += (sender, args) =>
+                {
+                    IsPinVisible = false;
+                };
+
                 parkDataAsync.OrderBy(x => x.dist);
 
                 int loopIndex = 0;
-
+                _pinVsParkItems.Clear();
                 foreach (var i in parkDataAsync)
                 {
                     if (loopIndex > 4)
@@ -138,11 +184,12 @@ namespace EventParkering.ViewModel
                     {
                         Type = PinType.Place,
                         Position = new Position(i.lat, i.lon),
-                        Label = i.name + " - " + i.dist + " meter från eventet.",
-                        Icon = SetPinIconStream("EventParkering.parkingSpot.png"),
+                        Label = "",
+                        Icon = SetPinIconStream("EventParkering.parkingSpot.png")
                     };
                     
-                    Map.Pins.Add(parkPin);          
+                    Map.Pins.Add(parkPin);
+                    _pinVsParkItems.Add(parkPin, i);
 
                     double R = 6371.0; // Earth's radius
                     var dLat = (Math.PI / 180) * (i.lat - eventlat);
@@ -155,22 +202,7 @@ namespace EventParkering.ViewModel
                     var d = R * c; // distance in Km.
 
                     Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(eventlat, eventlon), Distance.FromKilometers(d)));
-
-                    /*IsPinVisible = true;
-                    Map.PinClicked += (sender, args) =>
-                    {
-
-                        NewAddress = i.name;
-                        Debug.WriteLine("hej");
-                    };*/
-                    parkPin.Clicked += (sender, args) =>
-                    {
-                        CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
-                    };
                 }
-
-                var neweventlat = Convert.ToDouble(Lat, System.Globalization.CultureInfo.InvariantCulture);
-                var neweventlon = Convert.ToDouble(Lon, System.Globalization.CultureInfo.InvariantCulture);
             }
             catch (Exception err)
             {
@@ -212,16 +244,6 @@ namespace EventParkering.ViewModel
                 string reason = e.Message;
                 return false;
             }
-        }
-
-        public override void OnNavigatedFrom(INavigationParameters parameters)
-        {
-
-        }
-
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-          
         }
 
         public async override void OnNavigatingTo(INavigationParameters parameters)

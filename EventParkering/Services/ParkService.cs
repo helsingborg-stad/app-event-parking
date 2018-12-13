@@ -27,9 +27,9 @@ namespace EventParkering.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    ObservableCollection<ParkItem> stations = JsonConvert.DeserializeObject<ObservableCollection<ParkItem>>(content);
+                    ObservableCollection<ParkItem> parkingspots = JsonConvert.DeserializeObject<ObservableCollection<ParkItem>>(content);
                     Debug.WriteLine(content);
-                    return stations;
+                    return parkingspots;
                 }
                 else
                 {

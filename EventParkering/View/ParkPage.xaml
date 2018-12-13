@@ -23,6 +23,8 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
@@ -108,17 +110,13 @@
                            </OnPlatform>
                        </Label.FontFamily>
                 </Label>
-            </Grid>
-             <ContentView Content="{Binding Map}" x:Name="MyMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-            
-            <AbsoluteLayout>
+               </Grid>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <ContentView Content="{Binding Map}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds = "1, 1, 1, 1" AbsoluteLayout.LayoutFlags = "All"/>
                 
-                <Label BackgroundColor="Black" Text="{Binding NewAddress}" TextColor="Black"
-                 IsVisible = "{Binding IsPinVisible}" 
-                 AbsoluteLayout.LayoutBounds = "0.5, 0.95, 0.95, 0.1" AbsoluteLayout.LayoutFlags = "All"/>
+                <Button Command="{Binding NavigateMe}" BackgroundColor="White" IsVisible="{Binding IsPinVisible}" Text="{Binding NewAddress}" TextColor="Blue" AbsoluteLayout.LayoutBounds = "1, 0, 1, 0.15" AbsoluteLayout.LayoutFlags = "All"/>
                 
             </AbsoluteLayout>
-            
         </StackLayout> 
     </ContentPage.Content>
 </ContentPage>
