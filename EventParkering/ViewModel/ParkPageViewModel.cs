@@ -9,10 +9,8 @@ using Plugin.Geolocator;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms.GoogleMaps;
-using Plugin.ExternalMaps;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections.ObjectModel;
 using Prism.Services;
 
 namespace EventParkering.ViewModel
