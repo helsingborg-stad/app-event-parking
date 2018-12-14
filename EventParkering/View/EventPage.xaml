@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="*"/> 
                 <ColumnDefinition Width="*"/> 
             </Grid.ColumnDefinitions>
-           <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Spacing="15">
+           <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Spacing="10">
             <Label x:Name="HelloLabel"
                    Margin="30,0,0,0"
                    FontSize="30"
@@ -41,7 +41,8 @@
                        </OnPlatform>
                    </Label.FontFamily>
             </Label>
-            <ff:CachedImage Source="waving.gif" />
+            <ff:CachedImage x:Name="WaveGif" 
+                            Source="waving.gif"/>
             <Label Text=","
                    FontSize="30"
                    TextColor="Black"

@@ -114,13 +114,15 @@
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 
              <ContentView Content="{Binding Map}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All"/>
+               
                 <Button Command="{Binding NavigateMe}" 
-                        BackgroundColor="White" 
+                        BackgroundColor="#FAFAFA" 
                         IsVisible="{Binding IsPinVisible}" 
                         Text="{Binding NewAddress}" 
                         TextColor="Black" 
                         AbsoluteLayout.LayoutBounds="1,0,1,0.15" 
-                        AbsoluteLayout.LayoutFlags="All">
+                        AbsoluteLayout.LayoutFlags="All"
+                        FontSize="15">
                         <Button.FontFamily>
                           <OnPlatform x:TypeArguments="x:String">
                              <On Platform="iOS">Montserrat-Bold</On>
@@ -128,13 +130,32 @@
                           </OnPlatform>
                         </Button.FontFamily>
                </Button>
-                <Label Text="Tryck på kartan för att se alla punkter igen"
-                       FontSize="10"
-                       HorizontalOptions="Center"
-                       TextColor="Black"
-                       AbsoluteLayout.LayoutBounds="0.5,1,1,0.1" 
+               <Label BackgroundColor="#FAFAFA"
+                      AbsoluteLayout.LayoutBounds="0.5,0.15,1,0.15" 
+                      AbsoluteLayout.LayoutFlags="All"
+                      IsVisible="{Binding IsPinVisible}"/>
+               <Button Command="{Binding NavigateMe}" 
+                       BackgroundColor="#2BCD71" 
+                       IsVisible="{Binding IsPinVisible}" 
+                       TextColor="Black" 
+                       Text="Navigera"
+                       AbsoluteLayout.LayoutBounds="0.5,0.15,0.5,0.1" 
                        AbsoluteLayout.LayoutFlags="All"
-                       IsVisible="{Binding IsPinVisible}">
+                       FontSize="15">
+                        <Button.FontFamily>
+                          <OnPlatform x:TypeArguments="x:String">
+                             <On Platform="iOS">Montserrat-Bold</On>
+                             <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                          </OnPlatform>
+                        </Button.FontFamily>
+               </Button>
+               <Label Text="Tryck på kartan för att se alla punkter igen"
+                      FontSize="10"
+                      HorizontalOptions="Center"
+                      TextColor="Black"
+                      AbsoluteLayout.LayoutBounds="0.5,1,1,0.1" 
+                      AbsoluteLayout.LayoutFlags="All"
+                      IsVisible="{Binding IsPinVisible}">
                        <Label.FontFamily>
                            <OnPlatform x:TypeArguments="x:String">
                                <On Platform="iOS">Montserrat-Medium</On>

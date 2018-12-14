@@ -12,6 +12,7 @@ using Xamarin.Forms.GoogleMaps;
 using System.Collections.Generic;
 using System.Linq;
 using Prism.Services;
+using Plugin.ExternalMaps;
 
 namespace EventParkering.ViewModel
 {
@@ -119,10 +120,12 @@ namespace EventParkering.ViewModel
             Map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(56.04673, 12.69437), 15d));
             Map.MyLocationEnabled = true;
 
-            /*NavigateMe = new DelegateCommand(() =>
+           
+            NavigateMe = new DelegateCommand(() =>
             {
-                CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
-            });*/
+                _pageDialogService.DisplayAlertAsync("test", "test", "test");
+                //CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
+            });
         }
 
         public async Task GetParkingSpot()
@@ -148,8 +151,7 @@ namespace EventParkering.ViewModel
                 Map.PinClicked += (sender, e) =>
                 {
                     IsPinVisible = true;
-                    NewAddress = (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].name : Title) + (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].dist:"");
-                    Debug.WriteLine("hey");
+                    NewAddress = (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].name : Title) + " - " + (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].dist:"") + " meter från eventet.";
                     Map.Pins.Remove(e.Pin);
                     Map.SelectedPin = null;
                     Map.Pins.Add(e.Pin);

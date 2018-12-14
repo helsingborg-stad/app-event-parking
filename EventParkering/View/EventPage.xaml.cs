@@ -24,6 +24,11 @@ namespace EventParkering.View
             ChooseLabel.Text = Language.AppResource.ChooseLabelResx;
 
             listView.ItemSelected += (sender, args) => listView.SelectedItem = null;
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                WaveGif.WidthRequest = 60;
+            }
         }
     }
 }
