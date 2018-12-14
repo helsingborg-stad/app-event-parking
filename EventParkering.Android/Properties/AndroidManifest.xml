@@ -10,6 +10,10 @@
 	<uses-permission android:name="android.permission.INTERNET" />
     
 	<application android:label="EventParkering.Android" android:icon="@mipmap/icon">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCkFyWKnfCv-r56ANYA64CeWRR42tYXM-M" />
+        <!-- Debug key -->
+		<!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCkFyWKnfCv-r56ANYA64CeWRR42tYXM-M" />-->
+        
+        <!-- Release key -->
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDHobzrBtgIhN1IfMie6GvAD4iEQ0qK83Q" />
 	</application>
 </manifest>

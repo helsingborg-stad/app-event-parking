@@ -106,6 +106,20 @@ namespace EventParkering.ViewModel
             }
         }
 
+        private ParkItem _selectedParkItem;
+        public ParkItem SelectedParkItem
+        {
+            get => _selectedParkItem;
+            set
+            {
+                _selectedParkItem = value;
+
+                IsPinVisible = value != null; //Show/Hide Button
+                if (value != null)
+                    NewAddress = value.name + " - " + value.dist + " meter från eventet."; //Update Button Title
+            }
+        }
+
         public ParkPageViewModel(INavigationService navigationService, ParkService parkService, IPageDialogService pageDialogService)
         : base(navigationService)
         {
@@ -120,11 +134,14 @@ namespace EventParkering.ViewModel
             Map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(56.04673, 12.69437), 15d));
             Map.MyLocationEnabled = true;
 
-           
+
             NavigateMe = new DelegateCommand(() =>
             {
-                _pageDialogService.DisplayAlertAsync("test", "test", "test");
-                //CrossExternalMaps.Current.NavigateTo(i.name, i.lat, i.lon);
+                if (SelectedParkItem != null)
+                {
+                    //Open the map based on Selected ParkItem
+                    CrossExternalMaps.Current.NavigateTo(SelectedParkItem.name, SelectedParkItem.lat, SelectedParkItem.lon);
+                }
             });
         }
 
@@ -150,16 +167,21 @@ namespace EventParkering.ViewModel
 
                 Map.PinClicked += (sender, e) =>
                 {
-                    IsPinVisible = true;
-                    NewAddress = (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].name : Title) + " - " + (_pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin].dist:"") + " meter från eventet.";
-                    Map.Pins.Remove(e.Pin);
-                    Map.SelectedPin = null;
-                    Map.Pins.Add(e.Pin);
+                    //Set Selected Park Item if Clicked in Park Item(Get the Park Item for the Pin from Saved dict)
+                    SelectedParkItem = _pinVsParkItems.ContainsKey(e.Pin) ? _pinVsParkItems[e.Pin] : null;
+
+                    //Hide Info Window if ParkItem Clicked
+                    if (_pinVsParkItems.ContainsKey(e.Pin))
+                    {
+                        Map.Pins.Remove(e.Pin);
+                        Map.SelectedPin = null;
+                        Map.Pins.Add(e.Pin);
+                    }
                 };
 
                 Map.MapClicked += (sender, args) =>
                 {
-                    IsPinVisible = false;
+                    SelectedParkItem = null;//Remove Selected Park Item When Click Outside
                 };
 
                 parkDataAsync.OrderBy(x => x.dist);
