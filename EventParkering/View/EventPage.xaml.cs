@@ -24,6 +24,7 @@ namespace EventParkering.View
             ChooseLabel.Text = Language.AppResource.ChooseLabelResx;
 
             listView.ItemSelected += (sender, args) => listView.SelectedItem = null;
+            listView.HeightRequest = listView.RowHeight * 10;
 
             if (Device.RuntimePlatform == Device.Android)
             {
