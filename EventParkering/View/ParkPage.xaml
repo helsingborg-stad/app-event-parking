@@ -149,20 +149,6 @@
                           </OnPlatform>
                         </Button.FontFamily>
                </Button>
-               <Label Text="Tryck på kartan för att se alla punkter igen"
-                      FontSize="10"
-                      HorizontalOptions="Center"
-                      TextColor="Black"
-                      AbsoluteLayout.LayoutBounds="0.5,1,1,0.1" 
-                      AbsoluteLayout.LayoutFlags="All"
-                      IsVisible="{Binding IsPinVisible}">
-                       <Label.FontFamily>
-                           <OnPlatform x:TypeArguments="x:String">
-                               <On Platform="iOS">Montserrat-Medium</On>
-                               <On Platform="Android">Montserrat-Medium.ttf#Montserrat-Medium</On>
-                           </OnPlatform>
-                       </Label.FontFamily>
-               </Label>
             </AbsoluteLayout>
         </StackLayout> 
     </ContentPage.Content>
