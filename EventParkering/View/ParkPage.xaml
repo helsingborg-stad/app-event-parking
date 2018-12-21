@@ -111,41 +111,83 @@
                        </Label.FontFamily>
                 </Label>
                </Grid>
-            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <AbsoluteLayout VerticalOptions="FillAndExpand">
                 
              <ContentView Content="{Binding Map}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All"/>
                
-                <Button Command="{Binding NavigateMe}" 
+                <Label BackgroundColor="#FAFAFA"
+                      AbsoluteLayout.LayoutBounds="1,0,1,0.15" 
+                      AbsoluteLayout.LayoutFlags="All"
+                      IsVisible="{Binding IsPinVisible}"/>
+               
+                <Label  AbsoluteLayout.LayoutBounds="0.3,0,1,0.15" 
+                        AbsoluteLayout.LayoutFlags="All"
                         BackgroundColor="#FAFAFA" 
                         IsVisible="{Binding IsPinVisible}" 
                         Text="{Binding NewAddress}" 
                         TextColor="Black" 
-                        AbsoluteLayout.LayoutBounds="1,0,1,0.15" 
-                        AbsoluteLayout.LayoutFlags="All"
-                        FontSize="15">
-                        <Button.FontFamily>
+                        FontSize="15"
+                        Margin="30,25,0,0">
+                        <Label.FontFamily>
                           <OnPlatform x:TypeArguments="x:String">
                              <On Platform="iOS">Montserrat-Bold</On>
                              <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
                           </OnPlatform>
-                        </Button.FontFamily>
-               </Button>
-               <Label BackgroundColor="#FAFAFA"
-                      AbsoluteLayout.LayoutBounds="0.5,0.15,1,0.15" 
-                      AbsoluteLayout.LayoutFlags="All"
-                      IsVisible="{Binding IsPinVisible}"/>
-               <Button Command="{Binding NavigateMe}" 
-                       BackgroundColor="#2BCD71" 
-                       IsVisible="{Binding IsPinVisible}" 
-                       TextColor="Black" 
-                       Text="Navigera"
-                       AbsoluteLayout.LayoutBounds="0.5,0.15,0.5,0.1" 
-                       AbsoluteLayout.LayoutFlags="All"
-                       FontSize="15">
-                        <Button.FontFamily>
+                       </Label.FontFamily>
+               </Label>
+                
+                        
+                <Label  AbsoluteLayout.LayoutBounds="0.75, 0 , 0.05 , 0.15" 
+                        AbsoluteLayout.LayoutFlags="All"
+                        FontSize="15" 
+                        BackgroundColor="#FAFAFA" 
+                        IsVisible="{Binding IsPinVisible}" 
+                        Text="{Binding Minutes}" 
+                        TextColor="#9B9B9B"
+                        Margin="0,25,0,0">
+                        <Label.FontFamily>
                           <OnPlatform x:TypeArguments="x:String">
                              <On Platform="iOS">Montserrat-Bold</On>
                              <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                          </OnPlatform>
+                        </Label.FontFamily>
+               </Label>
+              
+               <Label  AbsoluteLayout.LayoutBounds="0.85 , 0 , 0.1 , 0.15" 
+                       AbsoluteLayout.LayoutFlags="All"
+                       TextColor="#9B9B9B" 
+                       BackgroundColor="#FAFAFA" 
+                       IsVisible="{Binding IsPinVisible}" 
+                       Text="min" 
+                       FontSize="15"
+                       Margin="0,25,0,0">
+                        <Label.FontFamily>
+                          <OnPlatform x:TypeArguments="x:String">
+                             <On Platform="iOS">Montserrat-Bold</On>
+                             <On Platform="Android">Montserrat-Bold.ttf#Montserrat-Bold</On>
+                          </OnPlatform>
+                        </Label.FontFamily>
+               </Label>
+               <forms:CachedImage AbsoluteLayout.LayoutBounds="0.95 , 0 , 0.15, 0.15" 
+                                  AbsoluteLayout.LayoutFlags="All"
+                                  Source="man.png" 
+                                  IsVisible="{Binding IsPinVisible}"
+                                  Margin="0,25,0,20"/>
+              
+             
+               <Button Command="{Binding NavigateMe}" 
+                       BackgroundColor="#2BCD71" 
+                       IsVisible="{Binding IsPinVisible}" 
+                       TextColor="White" 
+                       Text="Navigera till parkeringen"
+                       AbsoluteLayout.LayoutBounds="0.5,0.85,1,0.1" 
+                       AbsoluteLayout.LayoutFlags="All"
+                       FontSize="15"
+                       Margin="30,0,30,0">
+                        <Button.FontFamily>
+                          <OnPlatform x:TypeArguments="x:String">
+                             <On Platform="iOS">Montserrat-Regular</On>
+                             <On Platform="Android">Montserrat-Regular.ttf#Montserrat-Regular</On>
                           </OnPlatform>
                         </Button.FontFamily>
                </Button>

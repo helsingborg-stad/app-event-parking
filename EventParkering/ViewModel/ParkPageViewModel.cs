@@ -18,6 +18,7 @@ namespace EventParkering.ViewModel
 {
     public class ParkPageViewModel : BaseViewModel 
     {
+
         private readonly Dictionary<Pin, ParkItem> _pinVsParkItems = new Dictionary<Pin, ParkItem>();
         public DelegateCommand GoBack { get; set; }
         public DelegateCommand NavigateMe { get; set; }
@@ -26,6 +27,20 @@ namespace EventParkering.ViewModel
         public Map Map { get; private set; }
         IPageDialogService _pageDialogService;
         ParkService _parkService;
+
+        private double _minutes;
+        public double Minutes
+        {
+            get
+            {
+                return _minutes;
+            }
+            set
+            {
+                _minutes = value;
+                RaisePropertyChanged(nameof(Minutes));
+            }
+        }
 
         private bool _isPinVisible;
         public bool IsPinVisible 
@@ -90,6 +105,8 @@ namespace EventParkering.ViewModel
             set { SetProperty(ref _lon, value); }
         }
 
+
+
         private EventItem _eventItem;
         public EventItem eventItem
         {
@@ -116,7 +133,22 @@ namespace EventParkering.ViewModel
 
                 IsPinVisible = value != null; //Show/Hide Button
                 if (value != null)
-                    NewAddress = value.name + " - " + value.dist + " meter från eventet."; //Update Button Title
+                {
+                    NewAddress = value.name;
+                    var distance = Convert.ToDouble(value?.dist);
+                    var Sec = distance / 4.5;
+                    var Min = Sec / 60;
+                    if(Min < 1)
+                    {
+                        Minutes = 1;
+                    }
+                    else
+                    {
+                        double example = Min;
+                        double output = Convert.ToDouble(example.ToString("N0"));
+                        Minutes = output;
+                    }
+                }
             }
         }
 
